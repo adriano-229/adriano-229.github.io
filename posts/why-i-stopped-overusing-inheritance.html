@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why I stopped overusing inheritance — adriano-229</title>
+<meta name="description" content="Composition solved more problems for me than five years of &quot;is-a&quot; diagrams ever did.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128220;</text></svg>">
+</head>
+<body>
+
+<div class="wrap">
+  <header class="site-header">
+    <p class="handle"><a href="../index.html">adriano-229</a><span class="dot" aria-hidden="true"></span></p>
+    <p class="tagline"><span class="prompt">$</span> notes on topics</p>
+  </header>
+
+  <main>
+    <article class="post">
+      <a class="back-link" href="../index.html">&larr; all posts</a>
+
+      <div class="post-meta-row">
+        <span>Jul 12, 2026</span>
+      </div>
+
+      <h1>Why I stopped overusing inheritance</h1>
+      
+      <div class="content">
+        <p>For a long time I reached for inheritance by default. A <code>Dog</code> is an <code>Animal</code>, a <code>Car</code> is a <code>Vehicle</code>, and so on. It felt like the "correct" object-oriented way to model the world.</p>
+<p>The problem shows up later, once the hierarchy has to represent something the real world doesn't respect: a <code>Penguin</code> that can't <code>fly()</code>, or a <code>Square</code> that breaks <code>Rectangle</code>'s contract the moment you try to set width and height independently.</p>
+<h2>Composition ages better</h2>
+<p>Composition sidesteps most of this. Instead of asking "what is this thing," you ask "what can this thing do," and you assemble behavior from small, swappable pieces.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FlightBehavior</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;flying&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">WalkBehavior</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;walking&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Bird</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">behavior</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">behavior</span> <span class="o">=</span> <span class="n">behavior</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">behavior</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
+</code></pre></div>
+
+<p>No exceptions to carve out, no <code>NotImplementedError</code> stubs, no diamond problem to reason about.</p>
+<h2>Where inheritance still earns its place</h2>
+<p>I haven't abandoned inheritance entirely. It's still the right tool when you have a genuinely closed, stable taxonomy — UI widget frameworks, for instance, or exception hierarchies where <code>FileNotFoundError</code> really is an <code>OSError</code> and always will be.</p>
+<p>The rule I use now: reach for composition first, and only climb the inheritance ladder when the "is-a" relationship is unlikely to ever be violated by a future requirement.</p>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; 2026 adriano-229 &mdash; built with claude</p>
+  </footer>
+</div>
+</body>
+</html>
