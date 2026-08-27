@@ -7,7 +7,7 @@ excerpt: What is my personality type?
 > This test should not be taken as a definitive measure of our personalities but rather as a kind of clue. 🙂
 
 
-I took the 16 personality test on this website https://www.16personalities.com/free-personality-test and got the
+I took the 16 personality test on this [website](https://www.16personalities.com/free-personality-test) and got the
 result of ENFJ-T, known as the Protagonist. Specifically, I got the following scores:
 
 | Personality | Dominant Score      | Opposing Score      |

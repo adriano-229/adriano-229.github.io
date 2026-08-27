@@ -8,7 +8,7 @@ excerpt: Which are my strongest intelligences?
 
 
 I took the multiple intelligences test on
-this website https://alis.alberta.ca/careerinsite/know-yourself/multiple-intelligences-quiz and got the following scores:
+this [website](https://alis.alberta.ca/careerinsite/know-yourself/multiple-intelligences-quiz) and got the following scores:
 
 | Intelligence         | Score |
 |:---------------------|:------|
