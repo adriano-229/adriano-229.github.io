@@ -33,7 +33,7 @@ ROOT = Path(__file__).resolve().parent.parent
 POSTS_DIR = ROOT / "posts"
 OUT_DIR = ROOT / "docs"
 SITE_NAME = "adriano-229"
-SITE_TAGLINE = "notes on topics"
+SITE_TAGLINE = "notes on various topics"
 
 
 def _unquote(val: str) -> str:
@@ -126,7 +126,6 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   background: var(--paper);
-  background-image: radial-gradient(circle at 12% 8%, rgba(108, 111, 224, 0.05), transparent 45%);
   background-attachment: fixed;
   color: var(--ink);
   font-family: var(--sans);
@@ -136,11 +135,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  inset: -18%;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 18% 22%, rgba(93, 166, 255, 0.16), transparent 36%),
+    radial-gradient(ellipse at 82% 72%, rgba(108, 111, 224, 0.12), transparent 40%),
+    radial-gradient(ellipse at 55% 12%, rgba(174, 219, 255, 0.1), transparent 32%);
+  filter: blur(28px);
+  animation: blue-drift 28s ease-in-out infinite alternate;
+}
+
+@keyframes blue-drift {
+  0% { transform: translate3d(-2%, -1%, 0) scale(1); }
+  50% { transform: translate3d(2%, 1.5%, 0) scale(1.04); }
+  100% { transform: translate3d(-1%, 2%, 0) scale(1.02); }
+}
+
 a { color: var(--rust); text-decoration: none; transition: color 0.15s var(--ease); }
 a:hover { text-decoration: underline; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; border-radius: 2px; }
 
 .wrap {
+  position: relative;
+  z-index: 1;
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 0 24px;
@@ -426,6 +447,16 @@ HEAD_TEMPLATE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{root}style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128220;</text></svg>">
+<script>
+  MathJax = {{
+    tex: {{
+      inlineMath: [["$", "$"], ["\\\\(", "\\\\)"]],
+      displayMath: [["$$", "$$"], ["\\\\[", "\\\\]"]]
+    }},
+    options: {{ skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] }}
+  }};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 """

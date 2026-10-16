@@ -1,7 +1,7 @@
 ---
 title: Personality Test
 date: 2026-08-27
-excerpt: What is my personality type?
+excerpt: Half extroverted and half introverted, maybe?
 ---
 
 > This test should not be taken as a definitive measure of our personalities but rather as a kind of clue. 🙂

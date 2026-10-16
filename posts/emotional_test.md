@@ -1,7 +1,7 @@
 ---
 title: Emotional Intelligence Test
 date: 2026-08-27
-excerpt: How emotionally smart I am?
+excerpt: How much empathy I have?
 ---
 
 > This test should not be taken as a definitive measure of our personalities but rather as a kind of clue. 🙂

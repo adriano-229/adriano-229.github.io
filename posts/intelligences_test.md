@@ -1,7 +1,7 @@
 ---
 title: Multiple Intelligences Test
 date: 2026-08-27
-excerpt: Which are my strongest intelligences?
+excerpt: Am I more a logic or naturalistic person?
 ---
 
 > This test should not be taken as a definitive measure of our personalities but rather as a kind of clue. 🙂
@@ -23,14 +23,14 @@ this [website](https://alis.alberta.ca/careerinsite/know-yourself/multiple-intel
 
 Quick recap of my top 3:
 
-**Bodily/Kinesthetic**:
-You use all or part of your body to create products or solve problems. Athletes, surgeons, dancers and craftspeople have
+**Bodily/Kinesthetic**: You use all or part of your body to create products or solve problems. Athletes, surgeons,
+dancers and craftspeople have
 this intelligence.
 
 **Logical/Mathematical**: You appreciate abstract relationships. You use numbers effectively. Scientists, mathematicians
 and philosophers have this intelligence.
 
-**Intrapersonal**:You're able to distinguish among your own feelings, build accurate mental models of yourself and draw
+**Intrapersonal**: You're able to distinguish among your own feelings, build accurate mental models of yourself and draw
 on these models to make decisions about your life. People with strength in this intelligence are found in all walks of
 life.
 

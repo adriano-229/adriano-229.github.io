@@ -7,7 +7,6 @@ A lightweight site for notes on CS topics. Write Markdown, push to GitHub, and t
 - You write posts as `.md` files in `/posts`
 - `scripts/build.py` reads them and generates static HTML into `/docs`
 - A GitHub Actions workflow (`.github/workflows/deploy.yml`) runs the build automatically on every push and publishes `/docs` to the `gh-pages` branch
-- No database, no server, no JS framework — just Python turning Markdown into HTML
 
 ## Writing a new post
 
@@ -17,26 +16,23 @@ Every post needs frontmatter like this:
 
 ```markdown
 ---
-title: Your post title
-date: 2026-08-01
-excerpt: One sentence that shows up on the homepage.
----
-
-Write your post in regular Markdown here. Headings, `code`, **bold**,
-> blockquotes, lists, images, tables — all supported.
-```
-
-**Optional video embed** — add a `video_url` field with a YouTube link:
-
-```markdown
----
 title: My talk on B-trees
 date: 2026-08-01
-video_url: https://www.youtube.com/watch?v=XXXXXXXXXXX
+video_url: https://www.youtube.com/watch?v=XXXXXXXXXXX   # optional
 excerpt: A walkthrough of B-tree indexing in databases.
 ---
 
 Optional write-up goes here below the embedded video.
+```
+
+Posts support inline and display LaTeX through MathJax:
+
+```markdown
+Inline: $E = mc^2$
+
+$$
+\int_0^1 x^2\,dx = \frac{1}{3}
+$$
 ```
 
 ## Previewing locally
