@@ -25,16 +25,6 @@ excerpt: A walkthrough of B-tree indexing in databases.
 Optional write-up goes here below the embedded video.
 ```
 
-Posts support inline and display LaTeX through MathJax:
-
-```markdown
-Inline: $E = mc^2$
-
-$$
-\int_0^1 x^2\,dx = \frac{1}{3}
-$$
-```
-
 ## Previewing locally
 
 ```bash

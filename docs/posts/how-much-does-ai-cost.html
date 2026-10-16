@@ -10,20 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128220;</text></svg>">
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [["$", "$"], ["\\(", "\\)"]],
-      displayMath: [["$$", "$$"], ["\\[", "\\]"]]
-    },
-    chtml: {
-      scale: 1.05,
-      mtextInheritFont: true
-    },
-    options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] }
-  };
-</script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -55,20 +41,20 @@
 <p>Prices are usually expressed in dollars per million tokens (MT).</p>
 <p>Let's define the following variables:</p>
 <ul>
-<li>(I): input price (\$/MT).</li>
-<li>(O): output price (\$/MT).</li>
-<li>(W): cache write price (\$/MT).</li>
-<li>(R): cache read price (\$/MT).</li>
-<li>(X): input length (MT).</li>
-<li>(Y): output length (MT).</li>
+<li>Input price: I dollars per MT.</li>
+<li>Output price: O dollars per MT.</li>
+<li>Cache write price: W dollars per MT.</li>
+<li>Cache read price: R dollars per MT.</li>
+<li>Input length: X MT.</li>
+<li>Output length: Y MT.</li>
 </ul>
 <p>Without caching, the cost of a single request is:</p>
-<p>$$
-C = X \cdot I + Y \cdot O
-$$</p>
+<blockquote>
+<p>Cost = X times I + Y times O</p>
+</blockquote>
 <p>Notice that the model's maximum context length is not necessarily the number of tokens billed. You pay for the tokens
 actually processed, according to the provider's pricing rules.</p>
-<p>What happens when you send a second prompt? Will you pay (X \cdot I) again for the input?</p>
+<p>What happens when you send a second prompt? Will you pay X times I again for the input?</p>
 <p>Not necessarily! Some providers offer <strong>prompt caching</strong>, which allows previously processed input tokens to be reused at
 a lower price.</p>
 <p>There are two important operations:</p>
@@ -85,74 +71,40 @@ and model.</p>
 <p>Suppose we make 15 requests, each processing 30,000 input tokens and generating an average of 1,500 output tokens.</p>
 <p>Assume the following prices:</p>
 <ul>
-<li>(I = \$2/\text{MT})</li>
-<li>(O = \$10/\text{MT})</li>
-<li>(X = 30{,}000/10^6 = 0.03\,\text{MT})</li>
-<li>(Y = 1{,}500/10^6 = 0.0015\,\text{MT})</li>
-<li>(W = 1.25I = \$2.50/\text{MT})</li>
-<li>(R = 0.1I = \$0.20/\text{MT})</li>
+<li>Input price: 2 dollars per MT.</li>
+<li>Output price: 10 dollars per MT.</li>
+<li>Input length: 30,000 / 1,000,000 = 0.03 MT.</li>
+<li>Output length: 1,500 / 1,000,000 = 0.0015 MT.</li>
+<li>Cache write price: 1.25 times the input price = 2.50 dollars per MT.</li>
+<li>Cache read price: 0.1 times the input price = 0.20 dollars per MT.</li>
 </ul>
 <h3>With caching</h3>
 <p>Assume the first request writes the input to the cache, while the remaining 14 requests successfully reuse all cached
 input tokens.</p>
 <p>The first request costs:</p>
-<p>$$
-\begin{aligned}
-C_1 &amp;= X \cdot W + Y \cdot O \
-&amp;= 0.03 \cdot 2.5 + 0.0015 \cdot 10 \
-&amp;= 0.075 + 0.015 \
-&amp;= \$0.09
-\end{aligned}
-$$</p>
+<blockquote>
+<p>0.03 times 2.5 + 0.0015 times 10 = 0.09 dollars</p>
+</blockquote>
 <p>The remaining 14 requests cost:</p>
-<p>$$
-\begin{aligned}
-C_{2-15} &amp;= 14 (X \cdot R + Y \cdot O) \
-&amp;= 14 (0.03 \cdot 0.2 + 0.0015 \cdot 10) \
-&amp;= 14 (0.006 + 0.015) \
-&amp;= 14 \cdot 0.021 \
-&amp;= \$0.294
-\end{aligned}
-$$</p>
-<p>Therefore, the total cost with caching is:</p>
-<p>$$
-\begin{aligned}
-C_{\text{cached}} &amp;= C_1 + C_{2-15} \
-&amp;= 0.09 + 0.294 \
-&amp;= \boxed{\$0.384}
-\end{aligned}
-$$</p>
+<blockquote>
+<p>14 times (0.03 times 0.2 + 0.0015 times 10) = 0.294 dollars</p>
+</blockquote>
+<p>Therefore, the total cost with caching is <strong>0.384 dollars</strong>.</p>
 <h3>Without caching</h3>
 <p>Every request processes the input at the regular input price:</p>
-<p>$$
-\begin{aligned}
-C_{\text{request}} &amp;= X \cdot I + Y \cdot O \
-&amp;= 0.03 \cdot 2 + 0.0015 \cdot 10 \
-&amp;= 0.06 + 0.015 \
-&amp;= \$0.075
-\end{aligned}
-$$</p>
+<blockquote>
+<p>0.03 times 2 + 0.0015 times 10 = 0.075 dollars per request</p>
+</blockquote>
 <p>For all 15 requests:</p>
-<p>$$
-\begin{aligned}
-C_{\text{uncached}} &amp;= 15 (X \cdot I + Y \cdot O) \
-&amp;= 15 (0.03 \cdot 2 + 0.0015 \cdot 10) \
-&amp;= 15 \cdot 0.075 \
-&amp;= \boxed{\$1.125}
-\end{aligned}
-$$</p>
+<blockquote>
+<p>15 times 0.075 = 1.125 dollars</p>
+</blockquote>
 <h3>How much do we save?</h3>
 <p>The absolute savings are:</p>
-<p>$$
-S = C_{\text{uncached}} - C_{\text{cached}}
-= 1.125 - 0.384
-= \$0.741
-$$</p>
-<p>The percentage reduction is:</p>
-<p>$$
-S_{\%} = \frac{S}{C_{\text{uncached}}} \cdot 100
-\approx 65.9\%
-$$</p>
+<blockquote>
+<p>1.125 - 0.384 = 0.741 dollars</p>
+</blockquote>
+<p>The percentage reduction is approximately <strong>65.9%</strong>.</p>
 <p>In this example, caching reduces the total cost by approximately <strong>65.9%</strong>.</p>
 <h2>Final thoughts</h2>
 <p>Caching can significantly reduce costs when the same context is reused across multiple requests. However, cached content

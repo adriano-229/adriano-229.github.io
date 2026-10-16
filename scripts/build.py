@@ -368,29 +368,6 @@ article.post .content img {
   border: 1px solid var(--rule-soft);
 }
 
-article.post .content mjx-container {
-  color: var(--ink);
-}
-
-article.post .content mjx-container[jax="CHTML"][display="true"] {
-  display: block;
-  max-width: 100%;
-  margin: 1.4em 0;
-  padding: 0.25em 0.5em;
-  overflow-x: auto;
-  overflow-y: hidden;
-  text-align: center;
-  scrollbar-width: thin;
-}
-
-article.post .content mjx-container[jax="CHTML"][display="true"] mjx-math {
-  min-width: max-content;
-}
-
-article.post .content mjx-container[jax="CHTML"]:not([display="true"]) {
-  margin: 0 0.08em;
-}
-
 .video-embed {
   position: relative;
   width: 100%;
@@ -470,20 +447,6 @@ HEAD_TEMPLATE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{root}style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128220;</text></svg>">
-<script>
-  MathJax = {{
-    tex: {{
-      inlineMath: [["$", "$"], ["\\\\(", "\\\\)"]],
-      displayMath: [["$$", "$$"], ["\\\\[", "\\\\]"]]
-    }},
-    chtml: {{
-      scale: 1.05,
-      mtextInheritFont: true
-    }},
-    options: {{ skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] }}
-  }};
-</script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 """

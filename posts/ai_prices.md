@@ -20,23 +20,21 @@ Prices are usually expressed in dollars per million tokens (MT).
 
 Let's define the following variables:
 
-- \(I\): input price (\$/MT).
-- \(O\): output price (\$/MT).
-- \(W\): cache write price (\$/MT).
-- \(R\): cache read price (\$/MT).
-- \(X\): input length (MT).
-- \(Y\): output length (MT).
+- Input price: I dollars per MT.
+- Output price: O dollars per MT.
+- Cache write price: W dollars per MT.
+- Cache read price: R dollars per MT.
+- Input length: X MT.
+- Output length: Y MT.
 
 Without caching, the cost of a single request is:
 
-$$
-C = X \cdot I + Y \cdot O
-$$
+> Cost = X times I + Y times O
 
 Notice that the model's maximum context length is not necessarily the number of tokens billed. You pay for the tokens
 actually processed, according to the provider's pricing rules.
 
-What happens when you send a second prompt? Will you pay \(X \cdot I\) again for the input?
+What happens when you send a second prompt? Will you pay X times I again for the input?
 
 Not necessarily! Some providers offer **prompt caching**, which allows previously processed input tokens to be reused at
 a lower price.
@@ -60,12 +58,12 @@ Suppose we make 15 requests, each processing 30,000 input tokens and generating 
 
 Assume the following prices:
 
-- \(I = \$2/\text{MT}\)
-- \(O = \$10/\text{MT}\)
-- \(X = 30{,}000/10^6 = 0.03\,\text{MT}\)
-- \(Y = 1{,}500/10^6 = 0.0015\,\text{MT}\)
-- \(W = 1.25I = \$2.50/\text{MT}\)
-- \(R = 0.1I = \$0.20/\text{MT}\)
+- Input price: 2 dollars per MT.
+- Output price: 10 dollars per MT.
+- Input length: 30,000 / 1,000,000 = 0.03 MT.
+- Output length: 1,500 / 1,000,000 = 0.0015 MT.
+- Cache write price: 1.25 times the input price = 2.50 dollars per MT.
+- Cache read price: 0.1 times the input price = 0.20 dollars per MT.
 
 ### With caching
 
@@ -74,77 +72,31 @@ input tokens.
 
 The first request costs:
 
-$$
-\begin{aligned}
-C_1 &= X \cdot W + Y \cdot O \\
-&= 0.03 \cdot 2.5 + 0.0015 \cdot 10 \\
-&= 0.075 + 0.015 \\
-&= \$0.09
-\end{aligned}
-$$
+> 0.03 times 2.5 + 0.0015 times 10 = 0.09 dollars
 
 The remaining 14 requests cost:
 
-$$
-\begin{aligned}
-C_{2-15} &= 14 (X \cdot R + Y \cdot O) \\
-&= 14 (0.03 \cdot 0.2 + 0.0015 \cdot 10) \\
-&= 14 (0.006 + 0.015) \\
-&= 14 \cdot 0.021 \\
-&= \$0.294
-\end{aligned}
-$$
+> 14 times (0.03 times 0.2 + 0.0015 times 10) = 0.294 dollars
 
-Therefore, the total cost with caching is:
-
-$$
-\begin{aligned}
-C_{\text{cached}} &= C_1 + C_{2-15} \\
-&= 0.09 + 0.294 \\
-&= \boxed{\$0.384}
-\end{aligned}
-$$
+Therefore, the total cost with caching is **0.384 dollars**.
 
 ### Without caching
 
 Every request processes the input at the regular input price:
 
-$$
-\begin{aligned}
-C_{\text{request}} &= X \cdot I + Y \cdot O \\
-&= 0.03 \cdot 2 + 0.0015 \cdot 10 \\
-&= 0.06 + 0.015 \\
-&= \$0.075
-\end{aligned}
-$$
+> 0.03 times 2 + 0.0015 times 10 = 0.075 dollars per request
 
 For all 15 requests:
 
-$$
-\begin{aligned}
-C_{\text{uncached}} &= 15 (X \cdot I + Y \cdot O) \\
-&= 15 (0.03 \cdot 2 + 0.0015 \cdot 10) \\
-&= 15 \cdot 0.075 \\
-&= \boxed{\$1.125}
-\end{aligned}
-$$
+> 15 times 0.075 = 1.125 dollars
 
 ### How much do we save?
 
 The absolute savings are:
 
-$$
-S = C_{\text{uncached}} - C_{\text{cached}}
-= 1.125 - 0.384
-= \$0.741
-$$
+> 1.125 - 0.384 = 0.741 dollars
 
-The percentage reduction is:
-
-$$
-S_{\%} = \frac{S}{C_{\text{uncached}}} \cdot 100
-\approx 65.9\%
-$$
+The percentage reduction is approximately **65.9%**.
 
 In this example, caching reduces the total cost by approximately **65.9%**.
 
