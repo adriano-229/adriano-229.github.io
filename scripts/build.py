@@ -368,6 +368,29 @@ article.post .content img {
   border: 1px solid var(--rule-soft);
 }
 
+article.post .content mjx-container {
+  color: var(--ink);
+}
+
+article.post .content mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  max-width: 100%;
+  margin: 1.4em 0;
+  padding: 0.25em 0.5em;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center;
+  scrollbar-width: thin;
+}
+
+article.post .content mjx-container[jax="CHTML"][display="true"] mjx-math {
+  min-width: max-content;
+}
+
+article.post .content mjx-container[jax="CHTML"]:not([display="true"]) {
+  margin: 0 0.08em;
+}
+
 .video-embed {
   position: relative;
   width: 100%;
@@ -453,6 +476,10 @@ HEAD_TEMPLATE = """<!DOCTYPE html>
       inlineMath: [["$", "$"], ["\\\\(", "\\\\)"]],
       displayMath: [["$$", "$$"], ["\\\\[", "\\\\]"]]
     }},
+    chtml: {{
+      scale: 1.05,
+      mtextInheritFont: true
+    }},
     options: {{ skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] }}
   }};
 </script>
@@ -527,8 +554,7 @@ def render_post(post):
     html_out += f"""
   <main>
     <article class="post">
-      <a class="back-link" href="../index.html">&larr; all posts</a>
-
+    
       <div class="post-meta-row">
         <span>{fmt_date(post['date'])}</span>
       </div>
