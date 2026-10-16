@@ -1,5 +1,5 @@
 ---
-title: Emotional Intelligence Test
+title: Test on Emotional Intelligence
 date: 2026-08-27
 excerpt: How much empathy I have?
 ---

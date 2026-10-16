@@ -1,5 +1,5 @@
 ---
-title: Attitude towards change test
+title: Test on Attitude Towards Change
 date: 2026-10-16
 excerpt: Am I ready for the present and future "chaos"?
 ---

@@ -1,5 +1,5 @@
 ---
-title: Multiple Intelligences Test
+title: Test on Multiple Intelligences
 date: 2026-08-27
 excerpt: Am I more a logic or naturalistic person?
 ---

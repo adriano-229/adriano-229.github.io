@@ -1,5 +1,5 @@
 ---
-title: How Much Does AI Cost?
+title: How much does AI Cost?
 date: 2026-08-28
 excerpt: Understanding input, output, and cache read/write costs.
 ---

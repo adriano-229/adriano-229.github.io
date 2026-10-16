@@ -1,5 +1,5 @@
 ---
-title: Personality Test
+title: Test on Personality
 date: 2026-08-27
 excerpt: Half extroverted and half introverted, maybe?
 ---

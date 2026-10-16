@@ -1,5 +1,5 @@
 ---
-title: The 4 Temperaments Test
+title: Test on the 4 Temperaments
 date: 2026-10-16
 excerpt: Which of the four classical Greek temperaments characterizes me the most?
 ---

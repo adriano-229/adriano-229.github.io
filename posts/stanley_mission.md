@@ -1,7 +1,7 @@
 ---
-title: Companies Mission, Vision and Values concepts
+title: Companies' Mission, Vision and Values, Stanley
 date: 2026-10-16
-excerpt: Which are those of the Stanley bottles brand? One that goes against modern standards...
+excerpt: Which are those of the bottles brand? One that goes against modern standards
 ---
 
 ## Stanley 1913
@@ -33,5 +33,3 @@ replaced.
 
 The company's logo is a crowned bear with wings. The bear represents resilience, the wings the nature or unbelievable,
 and the crown is a nod to the creator, who was a famous electrical engineer.
-
-![stanley.png](../docs/images/stanley.png)
