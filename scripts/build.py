@@ -112,10 +112,9 @@ BASE_CSS = """
   --rule: #E4E4E7;
   --rule-soft: #EEEEF0;
   --code-bg: #F1F1F3;
-  --max-w: 680px;
-  --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --max-w: 820px;
+  --body-font: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --body-font-size: 16px;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -128,8 +127,8 @@ body {
   background: var(--paper);
   background-attachment: fixed;
   color: var(--ink);
-  font-family: var(--sans);
-  font-size: 17px;
+  font-family: var(--body-font);
+  font-size: var(--body-font-size);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -169,16 +168,29 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--rust); outline-
 
 /* Header */
 header.site-header {
-  padding: 72px 0 36px;
+  padding: 56px 0 36px;
   border-bottom: 1px solid var(--rule);
+  text-align: center;
+}
+
+.profile-image {
+  display: block;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--paper-raised);
+  box-shadow: 0 0 0 1px var(--rule), 0 8px 20px rgba(33, 34, 35, 0.1);
 }
 
 header.site-header .handle {
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: 10px;
-  font-family: var(--serif);
-  font-size: 2.2rem;
+  font-family: var(--body-font);
+  font-size: 2rem;
   font-weight: 600;
   letter-spacing: -0.015em;
   margin: 0 0 10px;
@@ -198,7 +210,7 @@ header.site-header .dot {
 
 header.site-header .tagline {
   color: var(--ink-soft);
-  font-family: var(--mono);
+  font-family: var(--body-font);
   font-size: 0.86rem;
   margin: 0;
 }
@@ -210,45 +222,72 @@ main { padding: 8px 0 100px; }
 
 .post-item {
   display: block;
-  padding: 30px 20px;
-  margin: 0 -20px;
+  padding: 32px 34px;
+  margin: 0 0 28px;
+  background: var(--paper-raised);
   border-bottom: 1px solid var(--rule-soft);
   border-radius: 12px;
   color: var(--ink);
-  transition: background-color 0.18s var(--ease), transform 0.18s var(--ease);
+  border: 1px solid var(--rule);
+  box-shadow: 0 8px 24px rgba(33, 34, 35, 0.05);
 }
 
-.post-item:hover {
-  text-decoration: none;
-  background: var(--paper-raised);
-  transform: translateX(2px);
-}
-
-.post-item:hover .post-title { color: var(--rust); }
 .post-item:last-child { border-bottom: none; }
+
+.post-content-preview {
+  position: relative;
+  max-height: 18rem;
+  overflow: hidden;
+}
+
+.post-content-preview.is-truncated:not(.is-expanded)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 5rem;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--paper-raised));
+}
+
+.post-content-preview.is-expanded {
+  max-height: none;
+}
+
+.expand-button {
+  display: block;
+  width: 100%;
+  margin: 18px 0 0;
+  padding: 10px 0 0;
+  border: 0;
+  border-top: 1px solid var(--rule-soft);
+  background: transparent;
+  color: var(--rust);
+  font: inherit;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+}
+
+.expand-button:hover { color: var(--ink); }
+.expand-button[hidden] { display: none; }
 
 .post-meta-row {
   margin-bottom: 12px;
-  font-family: var(--mono);
+  font-family: var(--body-font);
   font-size: 0.76rem;
   color: var(--ink-faint);
 }
 
 .post-title {
-  font-family: var(--serif);
-  font-size: 1.48rem;
+  font-family: var(--body-font);
+  font-size: 1.55rem;
   font-weight: 600;
   margin: 0 0 9px;
   line-height: 1.32;
   letter-spacing: -0.008em;
   transition: color 0.15s var(--ease);
-}
-
-.post-excerpt {
-  color: var(--ink-soft);
-  font-size: 0.97rem;
-  margin: 0;
-  max-width: 56ch;
 }
 
 /* Single post */
@@ -259,7 +298,7 @@ article.post {
 article.post .post-meta-row { margin-bottom: 20px; }
 
 article.post h1 {
-  font-family: var(--serif);
+  font-family: var(--body-font);
   font-size: 2.15rem;
   font-weight: 600;
   line-height: 1.22;
@@ -267,44 +306,44 @@ article.post h1 {
   margin: 0 0 22px;
 }
 
-article.post .content {
+.content {
   font-size: 1.06rem;
 }
 
-article.post .content h2 {
-  font-family: var(--serif);
+.content h2 {
+  font-family: var(--body-font);
   font-size: 1.42rem;
   font-weight: 600;
   margin: 2em 0 0.6em;
   letter-spacing: -0.01em;
 }
 
-article.post .content h3 {
-  font-family: var(--serif);
+.content h3 {
+  font-family: var(--body-font);
   font-size: 1.16rem;
   font-weight: 600;
   margin: 1.8em 0 0.5em;
 }
 
-article.post .content p { margin: 0 0 1.25em; }
+.content p { margin: 0 0 1.25em; }
 
-article.post .content a {
+.content a {
   text-decoration: underline;
   text-decoration-color: var(--rule);
   text-underline-offset: 3px;
   transition: text-decoration-color 0.15s var(--ease);
 }
-article.post .content a:hover { text-decoration-color: var(--rust); }
+.content a:hover { text-decoration-color: var(--rust); }
 
-article.post .content code {
-  font-family: var(--mono);
+.content code {
+  font-family: var(--body-font);
   background: var(--code-bg);
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.87em;
 }
 
-article.post .content pre {
+.content pre {
   background: var(--code-bg);
   padding: 20px 22px;
   border-radius: 10px;
@@ -313,14 +352,14 @@ article.post .content pre {
   border: 1px solid var(--rule-soft);
 }
 
-article.post .content pre code {
+.content pre code {
   background: none;
   padding: 0;
   font-size: 0.87rem;
   line-height: 1.6;
 }
 
-article.post .content blockquote {
+.content blockquote {
   margin: 0 0 1.5em;
   padding: 4px 0 4px 20px;
   border-left: 3px solid var(--rust);
@@ -328,40 +367,40 @@ article.post .content blockquote {
   font-style: italic;
 }
 
-article.post .content ul, article.post .content ol {
+.content ul, .content ol {
   margin: 0 0 1.25em;
   padding-left: 1.4em;
 }
 
-article.post .content li { margin-bottom: 0.45em; }
+.content li { margin-bottom: 0.45em; }
 
-article.post .content table {
+.content table {
   width: 100%;
   border-collapse: collapse;
   margin: 0 0 1.5em;
   font-size: 0.95rem;
 }
 
-article.post .content th,
-article.post .content td {
+.content th,
+.content td {
   padding: 10px 14px;
   border: 1px solid var(--rule);
   text-align: left;
 }
 
-article.post .content th {
+.content th {
   background: var(--rule-soft);
   font-weight: 600;
-  font-family: var(--mono);
+  font-family: var(--body-font);
   font-size: 0.82rem;
   letter-spacing: 0.01em;
 }
 
-article.post .content tr:nth-child(even) td {
+.content tr:nth-child(even) td {
   background: var(--paper-raised);
 }
 
-article.post .content img {
+.content img {
   max-width: 100%;
   border-radius: 10px;
   margin: 1.2em 0;
@@ -390,7 +429,7 @@ article.post .content img {
   align-items: center;
   gap: 6px;
   margin-bottom: 32px;
-  font-family: var(--mono);
+  font-family: var(--body-font);
   font-size: 0.84rem;
   color: var(--ink-faint);
   transition: color 0.15s var(--ease), transform 0.15s var(--ease);
@@ -402,7 +441,7 @@ article.post .content img {
 footer.site-footer {
   padding: 36px 0 60px;
   border-top: 1px solid var(--rule);
-  font-family: var(--mono);
+  font-family: var(--body-font);
   font-size: 0.78rem;
   color: var(--ink-faint);
 }
@@ -413,7 +452,7 @@ footer.site-footer a:hover { color: var(--rust); }
 .empty-state {
   padding: 48px 0;
   color: var(--ink-soft);
-  font-family: var(--mono);
+  font-family: var(--body-font);
   font-size: 0.9rem;
   text-align: center;
   border: 1px dashed var(--rule);
@@ -425,7 +464,7 @@ footer.site-footer a:hover { color: var(--rust); }
 @media (max-width: 600px) {
   header.site-header { padding: 44px 0 28px; }
   header.site-header .handle { font-size: 1.75rem; }
-  .post-item { margin: 0 -16px; padding: 26px 16px; }
+  .post-item { margin: 0 0 20px; padding: 26px 20px; }
   article.post h1 { font-size: 1.65rem; }
   .post-title { font-size: 1.28rem; }
 }
@@ -442,11 +481,7 @@ HEAD_TEMPLATE = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
 <meta name="description" content="{description}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{root}style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128220;</text></svg>">
 </head>
 <body>
 """
@@ -454,6 +489,7 @@ HEAD_TEMPLATE = """<!DOCTYPE html>
 HEADER_TEMPLATE = """
 <div class="wrap">
   <header class="site-header">
+    <img class="profile-image" src="{root}images/avatar.jpg" alt="Foto de perfil" onerror="this.style.display='none'">
     <p class="handle"><a href="{root}index.html">adriano-229</a><span class="dot" aria-hidden="true"></span></p>
     <p class="tagline"><span class="prompt">$</span> notes on topics</p>
   </header>
@@ -478,14 +514,29 @@ def render_index(posts):
         )
 
     for p in posts:
+        video_html = ""
+        if p.get("video_url"):
+            m = re.search(r"(?:v=|youtu\.be/|embed/)([\w-]+)", p["video_url"])
+            if m:
+                video_html = f"""
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/{m.group(1)}" title="{html.escape(p['title'])}" allowfullscreen loading="lazy"></iframe>
+      </div>"""
+
         items_html.append(f"""
-    <a class="post-item" href="posts/{p['slug']}.html">
+    <article class="post-item">
       <div class="post-meta-row">
         <span>{fmt_date(p['date'])}</span>
       </div>
       <h2 class="post-title">{html.escape(p['title'])}</h2>
-      <p class="post-excerpt">{html.escape(p.get('excerpt', ''))}</p>
-    </a>""")
+{video_html}
+      <div class="post-content-preview">
+        <div class="content">
+        {p['html']}
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>""")
 
     html_out = HEAD_TEMPLATE.format(
         title="adriano-229 — notes on topics",
@@ -494,6 +545,33 @@ def render_index(posts):
     )
     html_out += HEADER_TEMPLATE.format(root="")
     html_out += f'<main>{"".join(items_html)}</main>'
+    html_out += """
+<script>
+  const updateExpandButtons = () => {
+    document.querySelectorAll(".expand-button").forEach((button) => {
+      const preview = button.previousElementSibling;
+      if (!preview.classList.contains("is-expanded")) {
+        const isTruncated = preview.scrollHeight > preview.clientHeight;
+        preview.classList.toggle("is-truncated", isTruncated);
+        button.hidden = !isTruncated;
+      }
+    });
+  };
+
+  document.querySelectorAll(".expand-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      const preview = button.previousElementSibling;
+      const expanded = preview.classList.toggle("is-expanded");
+      button.hidden = false;
+      button.setAttribute("aria-expanded", String(expanded));
+      button.textContent = expanded ? "↑ Show less" : "↓ Show more";
+    });
+  });
+
+  updateExpandButtons();
+  window.addEventListener("resize", updateExpandButtons);
+</script>
+"""
     html_out += FOOTER_TEMPLATE.format(year=datetime.now().year)
     return html_out
 

@@ -50,7 +50,10 @@ From then on, every push that touches `/posts` rebuilds and republishes automati
 
 ## Customizing
 
-- **Colors, fonts, spacing** — in `scripts/build.py`, inside the `BASE_CSS` string
+- **Colors, fonts, spacing** — in `scripts/build.py`, inside the `BASE_CSS` string. The
+  `--body-font` field selects the page font and `--body-font-size` controls its size.
+- **Profile image** — add your image as `docs/images/avatar.jpg`; it is displayed as a
+  circular image in the centered header.
 - **Site name / tagline** — in `HEADER_TEMPLATE` and `SITE_TAGLINE`, same file
 
 ## Project structure

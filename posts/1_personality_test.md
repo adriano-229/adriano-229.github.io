@@ -1,14 +1,10 @@
 ---
 title: Test on Personality
 date: 2026-08-27
-excerpt: Half extroverted and half introverted, maybe?
 ---
 
-> This test should not be taken as a definitive measure of our personalities but rather as a kind of clue. 🙂
-
-
 I took the 16 personality test on this [website](https://www.16personalities.com/free-personality-test) and got the
-result of ENFJ-T, known as the Protagonist. Specifically, I got the following scores:
+result of ENFJ-T, known as the _Protagonist_. These were my scores:
 
 | Personality | Dominant Score      | Opposing Score      |
 |:------------|:--------------------|:--------------------|
@@ -19,6 +15,4 @@ result of ENFJ-T, known as the Protagonist. Specifically, I got the following sc
 | Identity    | 58% Turbulent (-T)  | 42% Assertive (-A)  |
 
 As can be seen, my scores are very close to the middle in all categories, which means that I have a balanced personality
-and can adapt to different situations!
-
----
+and can adapt to different situations.

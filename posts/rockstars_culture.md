@@ -1,10 +1,7 @@
 ---
 title: The Cultural Organization of Rockstar Games
 date: 2026-10-15
-excerpt: Behind the inner policies of one the biggest video-game companies
 ---
-
-## Rockstar Games: A Culture of Secrecy
 
 Rockstar Games is one of the most influential video game developers in the world, renowned for creating the *Grand Theft
 Auto* (GTA) and *Red Dead Redemption* franchises. Founded in 1998 by Dan and Sam Houser, the company operates as a
