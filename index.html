@@ -4,91 +4,906 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>adriano-229 — notes on topics</title>
-<meta name="description" content="notes on various topics">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="notes on topics">
 <link rel="stylesheet" href="style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128220;</text></svg>">
 </head>
 <body>
 
 <div class="wrap">
   <header class="site-header">
+    <img class="profile-image" src="images/avatar.jpg" alt="Foto de perfil" onerror="this.style.display='none'">
     <p class="handle"><a href="index.html">adriano-229</a><span class="dot" aria-hidden="true"></span></p>
     <p class="tagline"><span class="prompt">$</span> notes on topics</p>
   </header>
 <main>
-    <a class="post-item" href="posts/test-on-attitude-towards-change.html">
+    <article class="post-item">
+      <div class="post-meta-row">
+        <span>Oct 20, 2026</span>
+      </div>
+      <h2 class="post-title">Business plan proposal</h2>
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>This plan follows the intrapreneur guidelines. Legal steps such as registration, licenses and insurance are not included
+because the project would be developed inside
+an existing company.</p>
+<h3>DevBox</h3>
+<p>DevBox would be an internal tool for creating complete and identical development environments with one command. Each
+environment would include the operating system, tools, dependencies and test services, and would run as a container on
+the company's Kubernetes cluster.</p>
+<p>New developers currently spend several days installing and configuring their computers. Teams also lose time solving "it
+works on my machine" problems. DevBox would address both issues.</p>
+<p>The first version would include a repository with versioned environment definitions and a small Python command-line tool
+to create, start and delete environments. It would initially support one team's main project so that real users could
+test it quickly.</p>
+<p>The main alternatives are doing nothing, using shared setup documents, or using external services such as GitHub
+Codespaces and Gitpod. DevBox would be different because it uses the company's own infrastructure, keeps code and data
+in-house, and is adapted to the company's projects.</p>
+<p>I would ask developers, the infrastructure team and HR for feedback. I would also check whether someone was already
+working on a similar solution. The project would start with a short presentation to the directors and a pilot with one
+volunteer team. The results would be measured by comparing onboarding time before and after the pilot.</p>
+<p>I would lead the prototype as the intrapreneur. The infrastructure team would support the cluster, and a senior
+developer would review the environment definitions.</p>
+<h3>Financial projection</h3>
+<p>These are illustrative estimates:</p>
+<ul>
+<li>20 developers, 8 new hires per year and an average cost of USD 20 per hour.</li>
+<li>Reducing onboarding from three days to half a day would save about 160 hours per year.</li>
+<li>Reducing environment-related problems by half would save about 500 hours per year.</li>
+<li>Total estimated savings: about USD 13,200 per year.</li>
+<li>First-year cost: about USD 5,800, including development and infrastructure.</li>
+<li>Estimated first-year benefit: about USD 7,400, with payback in five to six months.</li>
+</ul>
+<p>In the short term, the goal would be to complete the pilot in three months. In twelve months, DevBox could support all
+projects. In the long term, the same environments could be offered to clients and external collaborators.</p>
+<p>The main risks are low adoption, maintenance costs and security problems in the shared cluster. These risks could be
+reduced by involving developers and the infrastructure team from the beginning and by keeping the first version small.</p>
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
+      <div class="post-meta-row">
+        <span>Oct 19, 2026</span>
+      </div>
+      <h2 class="post-title">Videos on business plans and entrepreneurship</h2>
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>I watched the video that summarizes the steps of a business
+plan: <a href="https://www.youtube.com/watch?v=-KhVuakkl3g">Plan de negocios – cómo hacer un plan de negocios en menos de un minuto</a>.</p>
+<p><strong>Reflection:</strong> the video condenses the process into eight steps in under a minute. That is useful as a checklist to see
+the whole picture and not forget any section. But a plan is not only a list of sections. The hard part is validating
+each assumption with real customers, and a one-minute video can't show that.</p>
+<p><strong>Another video I
+propose:</strong> <a href="https://www.youtube.com/watch?v=2Nel66ZB9Ck&amp;t=57s">Lean Canvas Workshop: Fast and effectively launch your business!</a>.
+It presents the Lean
+Canvas, a tool by Ash Maurya that summarizes an idea on a single page in about 20 minutes instead of writing a
+traditional plan that takes weeks. I chose it because it answers the limitation I noticed above: the canvas treats its
+content as assumptions to be tested, and it is easy to share with other people to get feedback.</p>
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
+      <div class="post-meta-row">
+        <span>Oct 18, 2026</span>
+      </div>
+      <h2 class="post-title">Test on Negotiation Skills</h2>
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>I took
+the <a href="https://www.psicologiahoy.com/co/test/carrera/test-habilidades-negociacion">negotiation skills test</a>.
+The score ranges are:</p>
+<table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–18</td>
+<td>Very bad negotiations</td>
+</tr>
+<tr>
+<td>19–36</td>
+<td>Bad negotiations</td>
+</tr>
+<tr>
+<td>37–63</td>
+<td>Competent negotiations</td>
+</tr>
+<tr>
+<td><strong>64–81</strong></td>
+<td><strong>Good negotiations</strong></td>
+</tr>
+<tr>
+<td>82–100</td>
+<td>Very good negotiations</td>
+</tr>
+</tbody>
+</table>
+<p>I scored <strong>64</strong>, which puts me in the Good negotiations range, right at its lower edge. I'm happy with the result,
+but being at the border means there is still room to grow toward the top range.</p>
+<p><strong>Reflection:</strong> this fits with my leadership results. Being cooperative helps me find agreements, but I need to defend
+my own interests more clearly, which is the same weak point I noticed in the leadership tests.</p>
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
+      <div class="post-meta-row">
+        <span>Oct 17, 2026</span>
+      </div>
+      <h2 class="post-title">Tests on Leadership Styles</h2>
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>I took two tests to understand my leadership profile:
+the <a href="https://www.uvirtual.org/test-liderazgo-blake-mouton">Blake &amp; Mouton test</a> and
+the <a href="https://gc.scalahed.com/recursos/files/r161r/w24518w/Teoria_liderazgo_situacional.pdf">Situational Leadership test</a>.</p>
+<p><strong>Blake &amp; Mouton:</strong> my result was Social (Country Club). This style is very good at dealing with people but weak on
+results and tasks. It gives staff a lot of freedom and lets them decide the best way to do things.</p>
+<p><img alt="Blake &amp; Mouton result" src="assets/10_leadership_style_tests/assets/blake.png" /></p>
+<p><strong>Situational Leadership:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Preference score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Directing</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Persuading</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Participating</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Delegating</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>My predominant style is Participating: I tend to involve people, listen to their opinions and build decisions
+together. My secondary style combines directing and delegating depending on the situation.</p>
+<p><strong>Reflection:</strong> both tests point in the same direction. I care about the people on the team and I prefer building
+consensus over imposing decisions. The weak side is the one Blake &amp; Mouton names: concern for results and deadlines. In
+team projects I should practice setting clear goals and checking progress, without losing the collaborative approach.</p>
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
       <div class="post-meta-row">
         <span>Oct 16, 2026</span>
       </div>
-      <h2 class="post-title">Test on Attitude Towards Change</h2>
-      <p class="post-excerpt">Am I ready for the present and future &quot;chaos&quot;?</p>
-    </a>
-    <a class="post-item" href="posts/change-how-to-surf-the-uncertainty.html">
-      <div class="post-meta-row">
-        <span>Oct 16, 2026</span>
+      <h2 class="post-title">Crossword on change management</h2>
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>Today I completed an online crossword about concepts from <em>A Survival Guide for Leaders</em> by Ronald Heifetz and Marty
+Linsky, focused on change management. You can find it
+here: <a href="https://es.educaplay.com/recursos-educativos/12192121-conduccion_de_personas_game.html">Conducción de personas – Educaplay</a>.</p>
+<p><img alt="Solved crossword" src="assets/9_crossword_change_management/assets/words.png" /></p>
+<p>It was a quick way to review the key vocabulary of the text.</p>
+        </div>
       </div>
-      <h2 class="post-title">Change, how to surf the uncertainty?</h2>
-      <p class="post-excerpt">A personal change related to my vocation</p>
-    </a>
-    <a class="post-item" href="posts/test-on-the-4-temperaments.html">
-      <div class="post-meta-row">
-        <span>Oct 16, 2026</span>
-      </div>
-      <h2 class="post-title">Test on the 4 Temperaments</h2>
-      <p class="post-excerpt">Which of the four classical Greek temperaments characterizes me the most?</p>
-    </a>
-    <a class="post-item" href="posts/influence-strategies-i-value-most.html">
-      <div class="post-meta-row">
-        <span>Oct 16, 2026</span>
-      </div>
-      <h2 class="post-title">Influence Strategies I Value Most</h2>
-      <p class="post-excerpt">How to tackle the task of respectfully evoking someone for doing something?</p>
-    </a>
-    <a class="post-item" href="posts/companies-mission-vision-and-values-stanley.html">
-      <div class="post-meta-row">
-        <span>Oct 16, 2026</span>
-      </div>
-      <h2 class="post-title">Companies&#x27; Mission, Vision and Values, Stanley</h2>
-      <p class="post-excerpt">Which are those of the bottles brand? One that goes against modern standards</p>
-    </a>
-    <a class="post-item" href="posts/the-cultural-organization-of-rockstar-games.html">
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
       <div class="post-meta-row">
         <span>Oct 15, 2026</span>
       </div>
+      <h2 class="post-title">Influence Strategies I Value Most</h2>
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>Those are:</p>
+<ol>
+<li>
+<p><strong>Leading by Example:</strong> Demonstrating values and behaviors not only by words but also through actions. "A leader
+   has to be in the midst of the troops" may summarize this concept. For example, when I teach tennis I usually
+   highlight
+   the fact
+   that maintaining mental peace is really important, specially when things don't go as expected, as the opponent may
+   take that as sign of weakness. I consider to do it myself at least when playing tennis matches! 😊</p>
+</li>
+<li>
+<p><strong>Inspirational Appeal:</strong> Appealing to shared values, collective awareness, and a common sense of purpose to motivate
+   others. I consider this a healthy way to encourage cooperation and positive change. For example, when working in
+   group
+   and having a deadline soon: I usually encourage the members to prevent last minute crunching by taking the necessary
+   measures such as
+   investing a bit of time every day, as this will be healthier and logistically better for the team.</p>
+</li>
+</ol>
+<p>I believe both strategies promote trust, authenticity, and mutual <em>respect</em> rather than relying on pressure or
+manipulation.</p>
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
+      <div class="post-meta-row">
+        <span>Oct 14, 2026</span>
+      </div>
+      <h2 class="post-title">Change, how to surf the uncertainty?</h2>
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>One significant change in my life was deciding to leave Industrial Engineering after three years and switch to Computer
+Science. I had a persistent feeling that something was
+wrong and that I needed a different path. Still, changing careers was difficult. I worried about the uncertainty of the
+future and felt sad about the possibility of losing three years of effort.</p>
+<p>Four years later, I consider the change positive. Looking back, I realize that Industrial Engineering’s career
+opportunities did not particularly interest me. Computer Science, by contrast, gives me more opportunities to explore
+research, abstract ideas, and the theoretical side of problems. Furthermore, it's important to say that the first years
+of both
+degrees have a lot in common in terms of the topics involved, almost all of them were related to the same formal
+sciences. Thus, it wasn't much
+of a waste of time in that sense, maybe the opposite.</p>
+<p>Several ideas from the course material can explain this process. First, the change involved resistance, especially the
+fear of the unknown and the desire for security. Second, Lewin’s model applies to my experience. The unfreezing stage
+began when I recognized my dissatisfaction with my original degree. The implementation stage involved changing careers
+and adapting to a new field. Finally, refreezing meant settling into Computer Science and confirming over time that it
+was a better fit.</p>
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
+      <div class="post-meta-row">
+        <span>Oct 13, 2026</span>
+      </div>
+      <h2 class="post-title">Test on Attitude Towards Change</h2>
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>Answer with the following scale:</p>
+<ul>
+<li>1 = Almost never</li>
+<li>2 = Occasionally</li>
+<li>3 = Frequently</li>
+<li>4 = Always</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">No.</th>
+<th>Statement</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>I look for information to stay up to date in my profession.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>I have discussed with colleagues the changes in my profession caused by the introduction of new technologies.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>I have researched how my profession will evolve in the future.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>I could explain what I need to do to adapt to future changes in my profession.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>I have learned how new technologies force companies to evolve and remain competitive.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>I know which aspects of my job could change or remain the same due to the introduction of new technologies.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>I know which aspects of my profession will improve with the introduction of new technologies.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>I could list which tasks in my profession can be performed outside the workplace.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>I have discussed the consequences of failing to adapt to changes in the job market.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>I have made a list of the changes I need to address to stay up to date in my chosen profession.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>I have considered which tasks in my profession may be replaced by artificial intelligence in the future.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>I understand the most important factors that could drive the evolution of the profession I am preparing for.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>I have participated in discussions about changes that could eliminate important aspects of my profession.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td>I understand how the new technologies used in my profession work.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td>I enjoy activities that involve new technologies.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+</tr>
+<tr>
+<td style="text-align: right;">16</td>
+<td>I would like to participate in course-related activities that use information and communication technologies from home.</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☒</td>
+</tr>
+</tbody>
+</table>
+<h3>My results</h3>
+<ul>
+<li>Total score: 49/64</li>
+<li>Answers 1–2: 4</li>
+<li>Answers 3–4: 12</li>
+</ul>
+<h3>Conclusion</h3>
+<p>My results suggest that I have a positive attitude toward change and new technologies. Nevertheless, this doesn't mean I
+consider them all to be a possitve evolution, advances in tech may make us unwiser.</p>
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
+      <div class="post-meta-row">
+        <span>Oct 12, 2026</span>
+      </div>
+      <h2 class="post-title">Test on the 4 Temperaments</h2>
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>Complete the test by assigning a number from 1 to 4 to each horizontal row. Assign 4 to the word you identify with the
+most and 1 to the word you identify with the least. Each word in a row must receive a number from 1 to 4, and no numbers
+may be repeated within a row.</p>
+<p>Once all rows are complete, add up the scores in each vertical column. The sum of the scores across all four columns
+must be 200. Otherwise, there is an error, and the entire test should be reviewed.</p>
+<p>The highest-scoring columns determine which temperament or temperaments dominate your life.</p>
+<p>My result were:</p>
+<table>
+<thead>
+<tr>
+<th>Sanguine</th>
+<th style="text-align: right;">Score</th>
+<th>Choleric</th>
+<th style="text-align: right;">Score</th>
+<th>Melancholic</th>
+<th style="text-align: right;">Score</th>
+<th>Phlegmatic</th>
+<th style="text-align: right;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lively</td>
+<td style="text-align: right;">2</td>
+<td>Adventurous</td>
+<td style="text-align: right;">3</td>
+<td>Analytical</td>
+<td style="text-align: right;">4</td>
+<td>Adaptable</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Playful</td>
+<td style="text-align: right;">2</td>
+<td>Persuasive</td>
+<td style="text-align: right;">1</td>
+<td>Persistent</td>
+<td style="text-align: right;">4</td>
+<td>Calm</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>Sociable</td>
+<td style="text-align: right;">2</td>
+<td>Decisive</td>
+<td style="text-align: right;">4</td>
+<td>Self-sacrificing</td>
+<td style="text-align: right;">3</td>
+<td>Submissive</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Convincing</td>
+<td style="text-align: right;">1</td>
+<td>Competitive</td>
+<td style="text-align: right;">3</td>
+<td>Considerate</td>
+<td style="text-align: right;">4</td>
+<td>Controlled</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>Enthusiastic</td>
+<td style="text-align: right;">3</td>
+<td>Inventive</td>
+<td style="text-align: right;">4</td>
+<td>Respectful</td>
+<td style="text-align: right;">2</td>
+<td>Reserved</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Sensitive</td>
+<td style="text-align: right;">3</td>
+<td>Self-sufficient</td>
+<td style="text-align: right;">2</td>
+<td>Energetic</td>
+<td style="text-align: right;">4</td>
+<td>Content</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Activist</td>
+<td style="text-align: right;">2</td>
+<td>Positive</td>
+<td style="text-align: right;">3</td>
+<td>Planner</td>
+<td style="text-align: right;">4</td>
+<td>Patient</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Spontaneous</td>
+<td style="text-align: right;">1</td>
+<td>Confident</td>
+<td style="text-align: right;">3</td>
+<td>Punctual</td>
+<td style="text-align: right;">4</td>
+<td>Quiet</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>Optimistic</td>
+<td style="text-align: right;">3</td>
+<td>Open</td>
+<td style="text-align: right;">2</td>
+<td>Organized</td>
+<td style="text-align: right;">4</td>
+<td>Attentive</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Funny</td>
+<td style="text-align: right;">2</td>
+<td>Dominant</td>
+<td style="text-align: right;">1</td>
+<td>Faithful</td>
+<td style="text-align: right;">4</td>
+<td>Friendly</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>Charming</td>
+<td style="text-align: right;">2</td>
+<td>Bold</td>
+<td style="text-align: right;">3</td>
+<td>Detail-oriented</td>
+<td style="text-align: right;">4</td>
+<td>Diplomatic</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Cheerful</td>
+<td style="text-align: right;">2</td>
+<td>Trusting</td>
+<td style="text-align: right;">3</td>
+<td>Cultured</td>
+<td style="text-align: right;">4</td>
+<td>Steady</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Inspiring</td>
+<td style="text-align: right;">2</td>
+<td>Independent</td>
+<td style="text-align: right;">4</td>
+<td>Idealistic</td>
+<td style="text-align: right;">3</td>
+<td>Harmless</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Warm</td>
+<td style="text-align: right;">3</td>
+<td>Decisive</td>
+<td style="text-align: right;">2</td>
+<td>Deep</td>
+<td style="text-align: right;">4</td>
+<td>Dry humor</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Cordial</td>
+<td style="text-align: right;">3</td>
+<td>Instigator</td>
+<td style="text-align: right;">2</td>
+<td>Musical</td>
+<td style="text-align: right;">4</td>
+<td>Conciliatory</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Talkative</td>
+<td style="text-align: right;">1</td>
+<td>Tenacious</td>
+<td style="text-align: right;">3</td>
+<td>Considerate</td>
+<td style="text-align: right;">4</td>
+<td>Tolerant</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>Lively</td>
+<td style="text-align: right;">2</td>
+<td>Leader</td>
+<td style="text-align: right;">3</td>
+<td>Loyal</td>
+<td style="text-align: right;">4</td>
+<td>Good listener</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Adorable</td>
+<td style="text-align: right;">2</td>
+<td>Boss</td>
+<td style="text-align: right;">1</td>
+<td>Organized</td>
+<td style="text-align: right;">4</td>
+<td>Peaceful</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>Popular</td>
+<td style="text-align: right;">1</td>
+<td>Productive</td>
+<td style="text-align: right;">3</td>
+<td>Perfectionist</td>
+<td style="text-align: right;">4</td>
+<td>Condescending</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>Jovial</td>
+<td style="text-align: right;">2</td>
+<td>Daring</td>
+<td style="text-align: right;">3</td>
+<td>Well-behaved</td>
+<td style="text-align: right;">1</td>
+<td>Balanced</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>TOTAL</td>
+<td style="text-align: right;">41</td>
+<td>TOTAL</td>
+<td style="text-align: right;">53</td>
+<td>TOTAL</td>
+<td style="text-align: right;">73</td>
+<td>TOTAL</td>
+<td style="text-align: right;">33</td>
+</tr>
+</tbody>
+</table>
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
+      <div class="post-meta-row">
+        <span>Oct 11, 2026</span>
+      </div>
+      <h2 class="post-title">The Stanley 1913 Company, their Mission, Vision and Values</h2>
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>Stanley 1913, founded by William Stanley Jr. in 1913, is a global lifestyle brand famous for inventing the all-steel
+vacuum bottle. For over a century, it has delivered durable, innovative food and beverage gear.</p>
+<p><strong>Vision</strong>: The company's vision is to "fuel the human experience, showing up for people who show up every day—across every
+continent, all around the world".</p>
+<p><strong>Mission</strong>: Stanley's mission is to "create, build and invent in a better way, for a better life and world". This is rooted in its
+"Built For Life™" promise, which drives its commitment to sustainability and reducing single-use waste.</p>
+<p><strong>Values</strong>: Stanley's core values are durability, relevance, and tradition —a commitment to products that last a lifetime, backed
+by a lifetime warranty. Parent company PMI adds guiding principles of sustainability, community, teamwork,
+accountability, and integrity.</p>
+<h3>Personal Opinion</h3>
+<p>What draws me to Stanley is its unwavering focus on quality and durability—values that feel increasingly overlooked
+today. In a culture where everything is treated as disposable, I am interested in products built to last, not to be
+replaced.</p>
+<p>The company's logo is a crowned bear with wings. The bear represents resilience, the wings the nature or unbelievable,
+and the crown is a nod to the creator, who was a famous electrical engineer.</p>
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
+      <div class="post-meta-row">
+        <span>Oct 10, 2026</span>
+      </div>
       <h2 class="post-title">The Cultural Organization of Rockstar Games</h2>
-      <p class="post-excerpt">Behind the inner policies of one the biggest video-game companies</p>
-    </a>
-    <a class="post-item" href="posts/how-much-does-ai-cost.html">
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>Rockstar Games is one of the most influential video game developers in the world, renowned for creating the <em>Grand Theft
+Auto</em> (GTA) and <em>Red Dead Redemption</em> franchises. Founded in 1998 by Dan and Sam Houser, the company operates as a
+subsidiary of Take-Two Interactive and has grown to over 4,700 employees across 12 offices worldwide. Its games are
+known for their sprawling open worlds, cinematic storytelling, and immense cultural impact.</p>
+<p>The studio’s organizational culture is defined by a powerful tension between its relentless pursuit of creative
+excellence and a historically demanding work environment. At the heart of this is an almost obsessive commitment to
+secrecy—one that shapes every aspect of how the company operates, from how it hires and manages employees to the extreme
+security measures it deploys to protect its most valuable intellectual property.</p>
+<p>Rockstar's approach to confidentiality is so extreme that it has drawn comparisons to Apple guarding the iPhone or
+Coca-Cola protecting its formula. In legal filings, the company itself has described its internal security culture as
+comparable to these industry giants, stating that "the standards and expectations regarding information security and
+privacy are exponentially beyond that of most employers". Every visitor to a Rockstar studio is required to sign a
+non-disclosure agreement, photography is strictly prohibited, contractors are escorted by security personnel, and
+personal laptops, phones, and tablets are banned from connecting to Rockstar systems.</p>
+<p>The non-disclosure agreements themselves are legendary in their severity. According to insider reports, Rockstar
+employees sign lifetime NDAs, meaning that developers cannot discuss specific details of their work even a decade
+after leaving the company. Topics such as the proprietary RAGE game engine are considered strictly taboo. A former
+technical director described the company as having "an almost pathological obsession with confidentiality". This secrecy
+is enforced by a dedicated team of five full-time investigators and a director whose sole job is to hunt for potential
+leaks.</p>
+<p>The company has taken extraordinary physical measures to prevent information from escaping. After individuals used
+drones to spy through office windows, Rockstar installed privacy film on its building windows. External storage devices
+are banned on office premises, and remote work has been heavily restricted—a controversial policy introduced after a
+massive 2022 data breach that saw early GTA 6 footage leaked online. Rockstar co-head Aaron Garbut described the 2022
+leaks as feeling "really weirdly invasive," saying "it's like they're inside your head".</p>
+<p>This culture of secrecy has had profound consequences for employees. In October 2025, Rockstar fired 34 workers across
+its UK and Canadian studios, accusing them of leaking confidential information via a private Discord server. The
+affected workers and the Independent Workers' Union of Great Britain (IWGB) alleged that the firings were actually an
+act of union-busting, as all 34 were part of a Discord group discussing working conditions and unionization. One fired
+employee described being "brought into a room with an HR person" and terminated for breaking an NDA that every employee
+must sign before working there, before being immediately escorted out by security. The union characterized the firings
+as having "a chilling effect" on the industry. Rockstar has denied these claims, maintaining that the workers were
+dismissed for gross misconduct related to leaking company secrets.</p>
+<p>The gap between Rockstar's public narrative of creative excellence and the lived experiences of many employees reveals a
+culture caught between its artistic ambitions and the human cost of achieving them—a culture where silence is not just
+encouraged, but contractually enforced for life.</p>
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
+      <div class="post-meta-row">
+        <span>Aug 29, 2026</span>
+      </div>
+      <h2 class="post-title">Test on Personality</h2>
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>I took the 16 personality test on this <a href="https://www.16personalities.com/free-personality-test">website</a> and got the
+result of ENFJ-T, known as the <em>Protagonist</em>. These were my scores:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Personality</th>
+<th style="text-align: left;">Dominant Score</th>
+<th style="text-align: left;">Opposing Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Energy</td>
+<td style="text-align: left;">51% Extraverted (E)</td>
+<td style="text-align: left;">49% Introverted (I)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mind</td>
+<td style="text-align: left;">60% Intuitive (N)</td>
+<td style="text-align: left;">40% Observant (S)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Nature</td>
+<td style="text-align: left;">68% Feeling (F)</td>
+<td style="text-align: left;">32% Thinking (T)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tactics</td>
+<td style="text-align: left;">67% Judging (J)</td>
+<td style="text-align: left;">33% Prospecting (P)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Identity</td>
+<td style="text-align: left;">58% Turbulent (-T)</td>
+<td style="text-align: left;">42% Assertive (-A)</td>
+</tr>
+</tbody>
+</table>
+<p>As can be seen, my scores are very close to the middle in all categories, which means that I have a balanced personality
+and can adapt to different situations.</p>
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
       <div class="post-meta-row">
         <span>Aug 28, 2026</span>
       </div>
-      <h2 class="post-title">How much does AI Cost?</h2>
-      <p class="post-excerpt">Understanding input, output, and cache read/write costs.</p>
-    </a>
-    <a class="post-item" href="posts/test-on-emotional-intelligence.html">
+      <h2 class="post-title">Test on Multiple Intelligences</h2>
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>I took the multiple intelligences test on
+this <a href="https://alis.alberta.ca/careerinsite/know-yourself/multiple-intelligences-quiz">website</a> and got the following scores:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Intelligence</th>
+<th style="text-align: left;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Bodily-Kinesthetic</td>
+<td style="text-align: left;">75</td>
+</tr>
+<tr>
+<td style="text-align: left;">Logical-Mathematical</td>
+<td style="text-align: left;">72</td>
+</tr>
+<tr>
+<td style="text-align: left;">Intrapersonal</td>
+<td style="text-align: left;">72</td>
+</tr>
+<tr>
+<td style="text-align: left;">Spatial</td>
+<td style="text-align: left;">62</td>
+</tr>
+<tr>
+<td style="text-align: left;">Musical</td>
+<td style="text-align: left;">59</td>
+</tr>
+<tr>
+<td style="text-align: left;">Naturalistic</td>
+<td style="text-align: left;">56</td>
+</tr>
+<tr>
+<td style="text-align: left;">Interpersonal</td>
+<td style="text-align: left;">50</td>
+</tr>
+<tr>
+<td style="text-align: left;">Linguistic</td>
+<td style="text-align: left;">47</td>
+</tr>
+</tbody>
+</table>
+<p>I agree on the overall results. However, for the naturalistic intelligence, I think my score should've been higher!</p>
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
       <div class="post-meta-row">
         <span>Aug 27, 2026</span>
       </div>
       <h2 class="post-title">Test on Emotional Intelligence</h2>
-      <p class="post-excerpt">How much empathy I have?</p>
-    </a>
-    <a class="post-item" href="posts/test-on-multiple-intelligences.html">
-      <div class="post-meta-row">
-        <span>Aug 27, 2026</span>
+
+      <div class="post-content-preview">
+        <div class="content">
+        <p>I took the emotional intelligences test on
+this <a href="https://www.psychologytoday.com/us/tests/personality/emotional-intelligence-test">website</a> and got 70 out of 100, which is considered above average.</p>
+<p>I think being empathetic is one of the most important characteristics of emotional intelligence, as it
+implies a
+constant sense of "hearing" of others meta-language, and listening is usually harder than just giving opinions.</p>
+        </div>
       </div>
-      <h2 class="post-title">Test on Multiple Intelligences</h2>
-      <p class="post-excerpt">Am I more a logic or naturalistic person?</p>
-    </a>
-    <a class="post-item" href="posts/test-on-personality.html">
-      <div class="post-meta-row">
-        <span>Aug 27, 2026</span>
-      </div>
-      <h2 class="post-title">Test on Personality</h2>
-      <p class="post-excerpt">Half extroverted and half introverted, maybe?</p>
-    </a></main>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article></main>
+<script>
+  const updateExpandButtons = () => {
+    document.querySelectorAll(".expand-button").forEach((button) => {
+      const preview = button.previousElementSibling;
+      if (!preview.classList.contains("is-expanded")) {
+        const isTruncated = preview.scrollHeight > preview.clientHeight;
+        preview.classList.toggle("is-truncated", isTruncated);
+        button.hidden = !isTruncated;
+      }
+    });
+  };
+
+  document.querySelectorAll(".expand-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      const preview = button.previousElementSibling;
+      const expanded = preview.classList.toggle("is-expanded");
+      button.hidden = false;
+      button.setAttribute("aria-expanded", String(expanded));
+      button.textContent = expanded ? "↑ Show less" : "↓ Show more";
+    });
+  });
+
+  updateExpandButtons();
+  window.addEventListener("resize", updateExpandButtons);
+</script>
+
   <footer class="site-footer">
     <p>&copy; 2026 adriano-229 &mdash; built with claude</p>
   </footer>
