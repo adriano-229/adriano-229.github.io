@@ -17,6 +17,7 @@ Body in markdown goes here.
 
 import html
 import re
+import shutil
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -73,6 +74,7 @@ def load_posts():
             print(f"WARNING: {f.name} missing fields {missing}, skipping")
             continue
         meta["filename"] = f.stem
+        meta["source_dir"] = f.parent
         meta["html"] = markdown.markdown(
             body, extensions=["fenced_code", "codehilite", "tables"]
         )
@@ -83,6 +85,27 @@ def load_posts():
         posts.append(meta)
     posts.sort(key=lambda p: p["_date_obj"], reverse=True)
     return posts
+
+
+def content_html(post, root):
+    """Adjust local Markdown image paths for the requested generated page."""
+    asset_root = f"{root}assets/{post['filename']}"
+
+    def replace_image(match):
+        src = match.group(1)
+        if re.match(r"^(?:[a-z]+:)?//|^(?:data|mailto):", src, re.IGNORECASE):
+            return match.group(0)
+        source_path = (post["source_dir"] / src).resolve()
+        try:
+            relative_path = source_path.relative_to(post["source_dir"].resolve())
+        except ValueError:
+            return match.group(0)
+        if not source_path.is_file():
+            print(f"WARNING: image not found for {post['filename']}: {src}")
+            return match.group(0)
+        return f'src="{asset_root}/{relative_path.as_posix()}"'
+
+    return re.sub(r'src="([^"]+)"', replace_image, post["html"])
 
 
 def fmt_date(date_str: str) -> str:
@@ -525,7 +548,7 @@ def render_index(posts):
 {video_html}
       <div class="post-content-preview">
         <div class="content">
-        {p['html']}
+        {content_html(p, '')}
         </div>
       </div>
       <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
@@ -596,7 +619,7 @@ def render_post(post):
       <h1>{html.escape(post['title'])}</h1>
       {video_html}
       <div class="content">
-        {post['html']}
+        {content_html(post, '../')}
       </div>
     </article>
   </main>"""
@@ -612,6 +635,24 @@ def build():
     (OUT_DIR / "style.css").write_text(BASE_CSS, encoding="utf-8")
 
     posts = load_posts()
+
+    assets_dir = OUT_DIR / "assets"
+    if assets_dir.exists():
+        shutil.rmtree(assets_dir)
+    assets_dir.mkdir(exist_ok=True)
+    for post in posts:
+        source_dir = post["source_dir"]
+        for image in re.findall(r"!\[[^\]]*\]\(([^)\s]+)",
+                                (source_dir / f"{post['filename']}.md").read_text(encoding="utf-8")):
+            source_path = (source_dir / image).resolve()
+            try:
+                relative_path = source_path.relative_to(source_dir.resolve())
+            except ValueError:
+                continue
+            if source_path.is_file():
+                destination = assets_dir / post["filename"] / relative_path
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(source_path, destination)
 
     (OUT_DIR / "index.html").write_text(render_index(posts), encoding="utf-8")
 

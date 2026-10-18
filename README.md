@@ -25,6 +25,15 @@ excerpt: A walkthrough of B-tree indexing in databases.
 Optional write-up goes here below the embedded video.
 ```
 
+Images can be added next to the Markdown file (or in a subfolder) and referenced with
+normal Markdown syntax:
+
+```markdown
+![Description](images/example.jpg)
+```
+
+The builder copies those local images to the generated site automatically.
+
 ## Previewing locally
 
 ```bash
