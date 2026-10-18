@@ -1,6 +1,6 @@
 ---
 title: Test on Personality
-date: 2026-08-27
+date: 2026-08-29
 ---
 
 I took the 16 personality test on this [website](https://www.16personalities.com/free-personality-test) and got the

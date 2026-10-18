@@ -1,6 +1,6 @@
 ---
 title: The Cultural Organization of Rockstar Games
-date: 2026-10-15
+date: 2026-10-10
 ---
 
 Rockstar Games is one of the most influential video game developers in the world, renowned for creating the *Grand Theft
@@ -21,7 +21,7 @@ non-disclosure agreement, photography is strictly prohibited, contractors are es
 personal laptops, phones, and tablets are banned from connecting to Rockstar systems.
 
 The non-disclosure agreements themselves are legendary in their severity. According to insider reports, Rockstar
-employees sign **lifetime NDAs**, meaning that developers cannot discuss specific details of their work even a decade
+employees sign lifetime NDAs, meaning that developers cannot discuss specific details of their work even a decade
 after leaving the company. Topics such as the proprietary RAGE game engine are considered strictly taboo. A former
 technical director described the company as having "an almost pathological obsession with confidentiality". This secrecy
 is enforced by a dedicated team of five full-time investigators and a director whose sole job is to hunt for potential

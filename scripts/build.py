@@ -33,7 +33,7 @@ ROOT = Path(__file__).resolve().parent.parent
 POSTS_DIR = ROOT / "posts"
 OUT_DIR = ROOT / "docs"
 SITE_NAME = "adriano-229"
-SITE_TAGLINE = "notes on various topics"
+SITE_TAGLINE = "notes on topics"
 
 
 def _unquote(val: str) -> str:
@@ -60,13 +60,6 @@ def parse_frontmatter(text: str):
     return meta, body
 
 
-def slugify(text: str) -> str:
-    text = text.lower()
-    text = re.sub(r"[^a-z0-9\s-]", "", text)
-    text = re.sub(r"\s+", "-", text.strip())
-    return text
-
-
 def load_posts():
     posts = []
     if not POSTS_DIR.exists():
@@ -79,7 +72,7 @@ def load_posts():
         if missing:
             print(f"WARNING: {f.name} missing fields {missing}, skipping")
             continue
-        meta["slug"] = meta.get("slug") or slugify(meta["title"])
+        meta["filename"] = f.stem
         meta["html"] = markdown.markdown(
             body, extensions=["fenced_code", "codehilite", "tables"]
         )
@@ -622,8 +615,13 @@ def build():
 
     (OUT_DIR / "index.html").write_text(render_index(posts), encoding="utf-8")
 
+    expected_pages = {f"{p['filename']}.html" for p in posts}
+    for generated_page in (OUT_DIR / "posts").glob("*.html"):
+        if generated_page.name not in expected_pages:
+            generated_page.unlink()
+
     for p in posts:
-        out_path = OUT_DIR / "posts" / f"{p['slug']}.html"
+        out_path = OUT_DIR / "posts" / f"{p['filename']}.html"
         out_path.write_text(render_post(p), encoding="utf-8")
 
     (OUT_DIR / ".nojekyll").write_text("", encoding="utf-8")

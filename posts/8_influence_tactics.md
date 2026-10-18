@@ -1,10 +1,9 @@
 ---
 title: Influence Strategies I Value Most
-date: 2026-10-16
-excerpt: How to tackle the task of respectfully evoking someone for doing something?
+date: 2026-10-15
 ---
 
-The two influence strategies that appeal to me most are:
+Those are:
 
 1. **Leading by Example:** Demonstrating values and behaviors not only by words but also through actions. "A leader
    has to be in the midst of the troops" may summarize this concept. For example, when I teach tennis I usually

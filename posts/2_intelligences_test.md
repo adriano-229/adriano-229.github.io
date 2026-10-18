@@ -1,6 +1,6 @@
 ---
 title: Test on Multiple Intelligences
-date: 2026-08-27
+date: 2026-08-28
 ---
 
 

@@ -1,10 +1,7 @@
 ---
 title: Change, how to surf the uncertainty?
-date: 2026-10-16
-excerpt: A personal change related to my vocation
+date: 2026-10-14
 ---
-
-# Changing a degree after 3 years and having 2 left to graduate: a waste of time?
 
 One significant change in my life was deciding to leave Industrial Engineering after three years and switch to Computer
 Science. I had a persistent feeling that something was

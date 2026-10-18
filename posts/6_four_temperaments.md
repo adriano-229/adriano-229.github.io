@@ -1,12 +1,7 @@
 ---
 title: Test on the 4 Temperaments
-date: 2026-10-16
-excerpt: Which of the four classical Greek temperaments characterizes me the most?
+date: 2026-10-12
 ---
-
-# Basic Temperament Test
-
-## Instructions
 
 Complete the test by assigning a number from 1 to 4 to each horizontal row. Assign 4 to the word you identify with the
 most and 1 to the word you identify with the least. Each word in a row must receive a number from 1 to 4, and no numbers
@@ -17,7 +12,7 @@ must be 200. Otherwise, there is an error, and the entire test should be reviewe
 
 The highest-scoring columns determine which temperament or temperaments dominate your life.
 
-## My Results
+My result were:
 
 | Sanguine     | Score | Choleric        | Score | Melancholic      | Score | Phlegmatic    | Score |
 |--------------|------:|-----------------|------:|------------------|------:|---------------|------:|
@@ -42,5 +37,3 @@ The highest-scoring columns determine which temperament or temperaments dominate
 | Popular      |     1 | Productive      |     3 | Perfectionist    |     4 | Condescending |     2 |
 | Jovial       |     2 | Daring          |     3 | Well-behaved     |     1 | Balanced      |     4 |
 | TOTAL        |    41 | TOTAL           |    53 | TOTAL            |    73 | TOTAL         |    33 |
-
-Take you own test here: https://fourtemperaments.com/4-primary-temperaments/

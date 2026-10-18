@@ -1,14 +1,15 @@
 ---
 title: Test on Attitude Towards Change
-date: 2026-10-16
-excerpt: Am I ready for the present and future "chaos"?
+date: 2026-10-13
 ---
 
-> This test should not be taken as a definitive measure of our personalities but rather as a kind of clue. 🙂
+Answer with the following scale:
 
+* 1 = Almost never
+* 2 = Occasionally
+* 3 = Frequently
+* 4 = Always
 
-**Scale:** 1 = Almost never / Very little, 2 = Occasionally / A little, 3 = Frequently / Quite a lot, 4 = Always / Very
-much.
 
 | No. | Statement                                                                                                               | 1  | 2  | 3  | 4  |
 |----:|-------------------------------------------------------------------------------------------------------------------------|:--:|:--:|:--:|:--:|
@@ -29,25 +30,11 @@ much.
 |  15 | I enjoy activities that involve new technologies.                                                                       | ☐ | ☐ | ☐ | ☒ |
 |  16 | I would like to participate in course-related activities that use information and communication technologies from home. | ☐ | ☐ | ☐ | ☒ |
 
-## Results
+### My results
 
-**Total score:** 49/64
-
-- **Answers 1–2:** 4
-- **Answers 3–4:** 12
-
-### Two Key Characteristics
-
-**1. Curiosity**
-
-I am interested in understanding how technology evolves and how it affects different professions. As a computer science
-student, I recognize the importance of continuous learning and adapting my knowledge to new tools and developments.
-
-**2. Openness, with room for better planning.**
-
-I am comfortable exploring new technologies and considering how artificial intelligence may transform the job market.
-However, I could improve by creating more concrete plans to prepare for these changes and by discussing their
-implications more frequently with others.
+* Total score: 49/64
+* Answers 1–2: 4
+* Answers 3–4: 12
 
 ### Conclusion
 
