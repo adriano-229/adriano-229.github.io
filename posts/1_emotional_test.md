@@ -8,4 +8,4 @@ this [website](https://www.psychologytoday.com/us/tests/personality/emotional-in
 
 I think being empathetic is one of the most important characteristics of emotional intelligence, as it
 implies a
-constant sense of "hearing" of others meta-language, and listening is usually harder than just giving opinions.
+constant sense of "hearing" others' meta-language, and listening is usually harder than giving opinions.

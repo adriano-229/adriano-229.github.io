@@ -14,5 +14,5 @@ result of ENFJ-T, known as the _Protagonist_. These were my scores:
 | Tactics     | 67% Judging (J)     | 33% Prospecting (P) |
 | Identity    | 58% Turbulent (-T)  | 42% Assertive (-A)  |
 
-As can be seen, my scores are very close to the middle in all categories, which means that I have a balanced personality
-and can adapt to different situations.
+As it can be seen, my scores are very close to the middle in all categories, which means I have a balanced personality
+and can adapt to different environments.

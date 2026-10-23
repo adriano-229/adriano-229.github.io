@@ -1,20 +1,3 @@
-#!/usr/bin/env python3
-"""
-Static site builder for adriano-229.
-Reads Markdown files from /posts, builds a styled HTML site into /docs.
-
-Each post is a .md file with frontmatter like:
-
----
-title: Why I stopped using inheritance
-date: 2026-07-12
-video_url: https://youtube.com/watch?v=xxxx   # optional
-excerpt: A short one-liner shown on the index page.
----
-
-Body in markdown goes here.
-"""
-
 import html
 import re
 import shutil

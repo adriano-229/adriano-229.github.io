@@ -18,4 +18,4 @@ this [website](https://alis.alberta.ca/careerinsite/know-yourself/multiple-intel
 | Interpersonal        | 50    |
 | Linguistic           | 47    |
 
-I agree on the overall results. However, for the naturalistic intelligence, I think my score should've been higher!
+I agree on the overall results. However, for the naturalistic intelligence, I believe my score should've been higher!

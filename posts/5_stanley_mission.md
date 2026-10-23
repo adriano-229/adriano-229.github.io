@@ -16,11 +16,15 @@ continent, all around the world".
 by a lifetime warranty. Parent company PMI adds guiding principles of sustainability, community, teamwork,
 accountability, and integrity.
 
+👉 [Source](https://www.linkedin.com/company/stanley-1913/life/d8647978-9fbd-4390-8177-3ccdf8290eb3/)
+
 ### Personal Opinion
 
-What draws me to Stanley is its unwavering focus on quality and durability—values that feel increasingly overlooked
+What draws me to Stanley is its focus on quality and durability—values that feel increasingly overlooked
 today. In a culture where everything is treated as disposable, I am interested in products built to last, not to be
 replaced.
 
+![stanley.png](assets/stanley.png)
+
 The company's logo is a crowned bear with wings. The bear represents resilience, the wings the nature or unbelievable,
-and the crown is a nod to the creator, who was a famous electrical engineer.
+and the crown is a nod to the creator, who was a renown electrical engineer.

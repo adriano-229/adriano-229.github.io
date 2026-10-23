@@ -10,7 +10,7 @@ A lightweight site for notes on CS topics. Write Markdown, push to GitHub, and t
 
 ## Writing a new post
 
-Create a new file in `/posts`. The date-prefixed naming convention (`YYYY-MM-DD-slug.md`) is just for tidiness in your file browser — the `date` field in the frontmatter is what actually controls sort order.
+Create a new file in `/posts`.
 
 Every post needs frontmatter like this:
 
@@ -31,8 +31,6 @@ normal Markdown syntax:
 ```markdown
 ![Description](images/example.jpg)
 ```
-
-The builder copies those local images to the generated site automatically.
 
 ## Previewing locally
 

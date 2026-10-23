@@ -3,7 +3,7 @@ title: Test on the 4 Temperaments
 date: 2026-10-12
 ---
 
-Complete the test by assigning a number from 1 to 4 to each horizontal row. Assign 4 to the word you identify with the
+**How to**: Complete the test by assigning a number from 1 to 4 to each horizontal row. Assign 4 to the word you identify with the
 most and 1 to the word you identify with the least. Each word in a row must receive a number from 1 to 4, and no numbers
 may be repeated within a row.
 
