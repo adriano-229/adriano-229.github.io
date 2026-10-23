@@ -80,7 +80,7 @@ BASE_CSS = """
   --rule: #E4E4E7;
   --rule-soft: #EEEEF0;
   --code-bg: #F1F1F3;
-  --max-w: 820px;
+  --max-w: 1000px;
   --body-font: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --body-font-size: 16px;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);

@@ -20,43 +20,167 @@
       <div class="post-meta-row">
         <span>Oct 20, 2026</span>
       </div>
-      <h2 class="post-title">Business plan proposal</h2>
+        <h2 class="post-title">Business plan: Parallel rendering as a service</h2>
       <div class="post-content-preview">
         <div class="content">
-        <p>This plan follows the intrapreneur guidelines. Legal steps such as registration, licenses and insurance are not included
-because the project would be developed inside
-an existing company.</p>
-<h3>DevBox</h3>
-<p>DevBox would be an internal tool for creating complete and identical development environments with one command. Each
-environment would include the operating system, tools, dependencies and test services, and would run as a container on
-the company's Kubernetes cluster.</p>
-<p>New developers currently spend several days installing and configuring their computers. Teams also lose time solving "it
-works on my machine" problems. DevBox would address both issues.</p>
-<p>The first version would include a repository with versioned environment definitions and a small Python command-line tool
-to create, start and delete environments. It would initially support one team's main project so that real users could
-test it quickly.</p>
-<p>The main alternatives are doing nothing, using shared setup documents, or using external services such as GitHub
-Codespaces and Gitpod. DevBox would be different because it uses the company's own infrastructure, keeps code and data
-in-house, and is adapted to the company's projects.</p>
-<p>I would ask developers, the infrastructure team and HR for feedback. I would also check whether someone was already
-working on a similar solution. The project would start with a short presentation to the directors and a pilot with one
-volunteer team. The results would be measured by comparing onboarding time before and after the pilot.</p>
-<p>I would lead the prototype as the intrapreneur. The infrastructure team would support the cluster, and a senior
-developer would review the environment definitions.</p>
-<h3>Financial projection</h3>
-<p>These are illustrative estimates:</p>
-<ul>
-<li>20 developers, 8 new hires per year and an average cost of USD 20 per hour.</li>
-<li>Reducing onboarding from three days to half a day would save about 160 hours per year.</li>
-<li>Reducing environment-related problems by half would save about 500 hours per year.</li>
-<li>Total estimated savings: about USD 13,200 per year.</li>
-<li>First-year cost: about USD 5,800, including development and infrastructure.</li>
-<li>Estimated first-year benefit: about USD 7,400, with payback in five to six months.</li>
-</ul>
-<p>In the short term, the goal would be to complete the pilot in three months. In twelve months, DevBox could support all
-projects. In the long term, the same environments could be offered to clients and external collaborators.</p>
-<p>The main risks are low adoption, maintenance costs and security problems in the shared cluster. These risks could be
-reduced by involving developers and the infrastructure team from the beginning and by keeping the first version small.</p>
+            <p>This proposal follows the intrapreneur guidelines. Legal, tax, and infrastructure costs are not included
+                because
+                the first version would be developed as a pilot inside an existing company.</p>
+
+            <h3>Business opportunity</h3>
+            <p>Many companies already have 3D models of products, buildings, machines, or environments, but turning
+                those assets
+                into high-quality images still requires powerful computers, specialized software, technical setup, and
+                repeated manual work.
+                This limits how quickly design, engineering, marketing, and sales teams can show realistic alternatives
+                to customers.</p>
+            <p>The proposed business is a managed <strong>3D visualization service</strong>: customers provide a
+                standard glTF or
+                GLB model and receive presentation-ready images from configured cameras, materials, and lighting. The
+                service would use a
+                parallel rendering pipeline to process several image tiles or jobs at once, making it possible to
+                deliver multiple views
+                and product variants without requiring the customer to own a powerful workstation.</p>
+
+            <h3>Proposed solution</h3>
+            <p>The existing C++ project is a strong technical foundation for this service. It already loads glTF and GLB
+                scenes,
+                supports cameras, textures, materials, shadows, direct lighting, indirect diffuse bounces, BVH
+                acceleration, progressive
+                tile rendering, and headless PNG output.</p>
+            <p>The customer would not need to configure a compiler, renderer, or virtual machine. A future web interface
+                or API
+                could accept a model, select a visual template, and return finished images with progress information and
+                a rendering history.</p>
+
+            <h3>Why not simply rent a cloud VM?</h3>
+            <p>A technically skilled customer can rent a VM and run a renderer independently, so compute capacity alone
+                is not
+                a strong differentiator. The service would compete by removing the surrounding work: model validation,
+                scene configuration,
+                camera and lighting presets, batch generation, consistent output, storage, and integration with the
+                customer's sales or
+                content workflow.</p>
+            <p>This creates a more interesting product than raw infrastructure. A furniture company could upload one
+                model and
+                receive a complete set of catalog views and color variants. An architect could request the same building
+                from several
+                camera positions. A manufacturer could generate proposal images from a configured product before
+                building a physical
+                prototype. These repeatable workflows are difficult to maintain when every customer manages a separate
+                VM.</p>
+
+            <h3>Target customers and applications</h3>
+            <ul>
+                <li>Product and furniture companies that need catalog images and configurable variants.</li>
+                <li>Architectural and real-estate firms that need interior, building, and renovation previews.</li>
+                <li>Manufacturers that want sales images for industrial equipment before production.</li>
+                <li>Agencies and design studios that need an automated rendering backend without buying workstations.
+                </li>
+                <li>Software companies that want an API for product configurators, digital twins, or proposal systems.
+                </li>
+            </ul>
+
+            <h3>Value proposition</h3>
+            <p>The service would shorten the path from an existing digital asset to a customer-facing visual. It could
+                reduce
+                manual rendering work, make design changes easier to compare, and let sales teams answer visual requests
+                faster. Standard
+                glTF/GLB input also makes the service compatible with many existing asset-production workflows instead
+                of forcing customers
+                into a proprietary scene format.</p>
+            <p>The strongest initial offer would be a <strong>managed rendering workflow</strong>, not an unrestricted
+                general-purpose cloud renderer. Templates, validation, predictable output, and optional support would
+                make the service
+                easier to adopt and provide value that a bare VM does not.</p>
+
+            <h3>Business model</h3>
+            <ul>
+                <li><strong>Professional service:</strong> render supplied models and prepare reusable templates.</li>
+                <li><strong>Subscription:</strong> provide a monthly number of jobs, stored projects, and standard
+                    output views.
+                </li>
+                <li><strong>API usage:</strong> charge by render time, image, resolution, or batch for integration with
+                    another product.
+                </li>
+                <li><strong>Enterprise deployment:</strong> install the service in private infrastructure when models
+                    are sensitive.
+                </li>
+            </ul>
+            <p>A small pilot should start with one narrow workflow, such as catalog images for configurable products.
+                Pricing
+                should be validated through customer interviews and a paid pilot rather than assumed in advance.</p>
+
+            <h3>Competitive position and limitations</h3>
+            <p>Commercial 3D packages offer more mature materials and artist tooling, while cloud VMs offer flexible
+                compute.
+                This project's opportunity is to provide a focused, programmable, and repeatable pipeline: open-standard
+                scene input, native
+                C++ performance, CPU portability, headless automation, and an architecture that can later use parallel
+                workers or GPU
+                acceleration.</p>
+            <p>It should not yet be marketed as a finished physically based renderer. Metallic and roughness values and
+                normal
+                maps are loaded, but the current shading model is mainly diffuse. The initial promise should focus on
+                reliable automated
+                visualization and workflow convenience, with rendering quality improving through the roadmap.</p>
+
+            <h3>Development roadmap</h3>
+            <ol>
+                <li><strong>Validate the problem:</strong> interview product, architecture, manufacturing, and
+                    visualization teams
+                    and select one repeatable use case.
+                </li>
+                <li><strong>Productize the prototype:</strong> add clear errors, structured logging, JSON render
+                    configuration,
+                    tests, benchmarks, camera and lighting presets, and documented input requirements.
+                </li>
+                <li><strong>Improve visual quality:</strong> implement a complete physically based material model,
+                    normal mapping,
+                    environment lighting, tone mapping, and better sampling or denoising.
+                </li>
+                <li><strong>Build the service:</strong> expose an API, add a job queue, progress reporting, project
+                    storage, access
+                    control, and an interface for uploading models and downloading results.
+                </li>
+                <li><strong>Scale execution:</strong> parallelize tile and job processing, optimize memory use, and
+                    evaluate GPU or
+                    cloud worker acceleration.
+                </li>
+            </ol>
+
+            <h3>Risks and mitigation</h3>
+            <ul>
+                <li><strong>VM competition:</strong> focus on templates, automation, integration, and support rather
+                    than raw compute.
+                </li>
+                <li><strong>Rendering quality:</strong> begin with controlled use cases and disclose prototype
+                    limitations while
+                    improving materials and lighting.
+                </li>
+                <li><strong>Performance and cost:</strong> benchmark scenes early, use job limits, and add parallel
+                    workers only
+                    when demand justifies them.
+                </li>
+                <li><strong>Asset confidentiality:</strong> offer private deployment or isolated storage for industrial
+                    and
+                    commercial models.
+                </li>
+            </ul>
+
+            <h3>Expected benefits</h3>
+            <p>For an internal pilot, success would mean that a customer can submit a valid model, choose a template,
+                and receive
+                a consistent set of images without manually configuring a workstation. The main measurements should be
+                time to first
+                render, cost per completed image, successful-job rate, turnaround time for variants, and willingness to
+                pay for the
+                workflow.</p>
+            <p>Overall, the project is best presented as a functional rendering prototype with commercialization
+                potential. Its
+                business value is not simply access to a remote computer; it is the possibility of turning standard 3D
+                assets into
+                repeatable, automated visual content for products, spaces, and technical proposals.</p>
         </div>
       </div>
       <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
@@ -70,15 +194,14 @@ reduced by involving developers and the infrastructure team from the beginning a
         <div class="content">
         <p>I watched the video that summarizes the steps of a business
 plan: <a href="https://www.youtube.com/watch?v=-KhVuakkl3g">Plan de negocios – cómo hacer un plan de negocios en menos de un minuto</a>.</p>
-<p><strong>Reflection:</strong> the video condenses the process into eight steps in under a minute. That is useful as a checklist to see
+            <p>The video condenses the process into eight steps in under a minute. That is useful as a checklist to see
 the whole picture and not forget any section. But a plan is not only a list of sections. The hard part is validating
 each assumption with real customers, and a one-minute video can't show that.</p>
 <p><strong>Another video I
 propose:</strong> <a href="https://www.youtube.com/watch?v=2Nel66ZB9Ck&amp;t=57s">Lean Canvas Workshop: Fast and effectively launch your business!</a>.
 It presents the Lean
 Canvas, a tool by Ash Maurya that summarizes an idea on a single page in about 20 minutes instead of writing a
-traditional plan that takes weeks. I chose it because it answers the limitation I noticed above: the canvas treats its
-content as assumptions to be tested, and it is easy to share with other people to get feedback.</p>
+    traditional plan that takes weeks. I chose it because it answers the limitation I noticed above.</p>
         </div>
       </div>
       <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
@@ -126,9 +249,10 @@ The score ranges are:</p>
                 </table>
             </div>
 <p>I scored <strong>64</strong>, which puts me in the Good negotiations range, right at its lower edge. I'm happy with the result,
-but being at the border means there is still room to grow toward the top range.</p>
-<p><strong>Reflection:</strong> this fits with my leadership results. Being cooperative helps me find agreements, but I need to defend
-my own interests more clearly, which is the same weak point I noticed in the leadership tests.</p>
+    but being at the border means there is still room to grow toward the top range!</p>
+            <p>This fits with my leadership results (see below). Being cooperative helps me find agreements, but I need
+                to defend
+                my own interests more clearly.</p>
         </div>
       </div>
       <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
@@ -142,11 +266,15 @@ my own interests more clearly, which is the same weak point I noticed in the lea
         <div class="content">
         <p>I took two tests to understand my leadership profile:
 the <a href="https://www.uvirtual.org/test-liderazgo-blake-mouton">Blake &amp; Mouton test</a> and
-the <a href="https://gc.scalahed.com/recursos/files/r161r/w24518w/Teoria_liderazgo_situacional.pdf">Situational Leadership test</a>.</p>
-<p><strong>Blake &amp; Mouton:</strong> my result was Social (Country Club). This style is very good at dealing with people but weak on
-results and tasks. It gives staff a lot of freedom and lets them decide the best way to do things.</p>
-            <p><img alt="Blake &amp; Mouton result" src="assets/blake.png"/></p>
-<p><strong>Situational Leadership:</strong></p>
+            the <a href="https://gc.scalahed.com/recursos/files/r161r/w24518w/Teoria_liderazgo_situacional.pdf">Situational
+                Leadership test</a>. These were my results.</p>
+            <p><strong>On Blake &amp; Mouton:</strong> my result was Social (Country Club). This style is very good at
+                dealing with people but weak on
+                results and tasks. It gives staff a lot of freedom and lets them decide the best way to do things.
+                However, as can be drawn from the image, I'm in the middle, not at the center of it.</p>
+            <p style="text-align: center;"><img alt="Blake &amp; Mouton result" src="assets/blake.png"
+                                                style="width: 700px; height: auto;"/></p>
+            <p><strong>On Situational Leadership:</strong></p>
             <div class="table-scroll">
                 <table>
 <thead>
@@ -207,23 +335,22 @@ here: <a href="https://es.educaplay.com/recursos-educativos/12192121-conduccion_
       <h2 class="post-title">Influence Strategies I Value Most</h2>
       <div class="post-content-preview">
         <div class="content">
-        <p>Those are:</p>
+            <p>Those are</p>
 <ol>
 <li>
 <p><strong>Leading by Example:</strong> Demonstrating values and behaviors not only by words but also through actions. "A leader
    has to be in the midst of the troops" may summarize this concept. For example, when I teach tennis I usually
    highlight
    the fact
-   that maintaining mental peace is really important, specially when things don't go as expected, as the opponent may
-   take that as sign of weakness. I consider to do it myself at least when playing tennis matches! 😊</p>
+    that maintaining mental peace is really important particularly when things don't go as expected, as the opponent may
+    take that as sign of weakness. I consider to do it myself, at least when playing tennis matches! 😊</p>
 </li>
 <li>
 <p><strong>Inspirational Appeal:</strong> Appealing to shared values, collective awareness, and a common sense of purpose to motivate
    others. I consider this a healthy way to encourage cooperation and positive change. For example, when working in
    group
-   and having a deadline soon: I usually encourage the members to prevent last minute crunching by taking the necessary
-   measures such as
-   investing a bit of time every day, as this will be healthier and logistically better for the team.</p>
+    and having a deadline soon: I usually encourage the members to prevent last minute crunching by rather destinating a
+    bit of time working every day, as this will be healthier and logistically better for the all team.</p>
 </li>
 </ol>
 <p>I believe both strategies promote trust, authenticity, and mutual <em>respect</em> rather than relying on pressure or
@@ -239,21 +366,26 @@ manipulation.</p>
       <h2 class="post-title">Change, how to surf the uncertainty?</h2>
       <div class="post-content-preview">
         <div class="content">
-        <p>One significant change in my life was deciding to leave Industrial Engineering after three years and switch to Computer
+            <p>One significant change in my life was deciding to leave Industrial Engineering after three years of
+                classes
+                and switch to Computer
 Science. I had a persistent feeling that something was
-wrong and that I needed a different path. Still, changing careers was difficult. I worried about the uncertainty of the
+                wrong and that I needed to take a different path. I worried about the uncertainty of the
 future and felt sad about the possibility of losing three years of effort.</p>
 <p>Four years later, I consider the change positive. Looking back, I realize that Industrial Engineering’s career
 opportunities did not particularly interest me. Computer Science, by contrast, gives me more opportunities to explore
-research, abstract ideas, and the theoretical side of problems. Furthermore, it's important to say that the first years
+    research, abstract ideas, and the theoretical side of problems, which I've allways been keen on. Furthermore, it's
+    important to say that the first years
 of both
 degrees have a lot in common in terms of the topics involved, almost all of them were related to the same formal
 sciences. Thus, it wasn't much
 of a waste of time in that sense, maybe the opposite.</p>
-<p>Several ideas from the course material can explain this process. First, the change involved resistance, especially the
+            <p>Several ideas from the course material can be explained by this process. First, the change involved
+                resistance, especially the
 fear of the unknown and the desire for security. Second, Lewin’s model applies to my experience. The unfreezing stage
 began when I recognized my dissatisfaction with my original degree. The implementation stage involved changing careers
-and adapting to a new field. Finally, refreezing meant settling into Computer Science and confirming over time that it
+                and adapting to a new field. Finally, refreezing meant settling into the new course and confirming over
+                time that it
 was a better fit.</p>
         </div>
       </div>
@@ -697,7 +829,8 @@ accountability, and integrity.</p>
 <p>What draws me to Stanley is its focus on quality and durability—values that feel increasingly overlooked
 today. In a culture where everything is treated as disposable, I am interested in products built to last, not to be
 replaced.</p>
-            <p><img alt="stanley.png" src="assets/stanley.png"/></p>
+            <p><img alt="stanley.png" src="assets/stanley.png"
+                    style="display: block; margin: 0 auto; width: 300px; height: auto;"/></p>
 <p>The company's logo is a crowned bear with wings. The bear represents resilience, the wings the nature or unbelievable,
 and the crown is a nod to the creator, who was a renown electrical engineer.</p>
         </div>
