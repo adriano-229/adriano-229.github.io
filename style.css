@@ -10,7 +10,7 @@
   --rule: #E4E4E7;
   --rule-soft: #EEEEF0;
   --code-bg: #F1F1F3;
-  --max-w: 820px;
+  --max-w: 1000px;
   --body-font: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --body-font-size: 16px;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
@@ -273,10 +273,17 @@ article.post h1 {
 .content li { margin-bottom: 0.45em; }
 
 .content table {
-  width: 100%;
+  width: max-content;
+  min-width: 100%;
   border-collapse: collapse;
-  margin: 0 0 1.5em;
   font-size: 0.95rem;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0 0 1.5em;
+  -webkit-overflow-scrolling: touch;
 }
 
 .content th,
