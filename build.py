@@ -1,102 +1,71 @@
 import html
 import re
-import shutil
-import sys
 from datetime import datetime
 from pathlib import Path
 
-try:
-    import markdown
-except ImportError:
-    print("Installing 'markdown' package...")
-    import subprocess
-    subprocess.run([sys.executable, "-m", "pip", "install", "--break-system-packages", "markdown"], check=True)
-    import markdown
-
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent
 POSTS_DIR = ROOT / "posts"
 OUT_DIR = ROOT / "docs"
 SITE_NAME = "adriano-229"
 SITE_TAGLINE = "notes on topics"
 
 
-def _unquote(val: str) -> str:
-    """Strip one layer of matching outer quotes only (not stray internal quotes)."""
-    if len(val) >= 2 and val[0] == val[-1] and val[0] in ('"', "'"):
-        return val[1:-1]
-    return val
-
-
-def parse_frontmatter(text: str):
-    m = re.match(r"^---\s*\n(.*?)\n---\s*\n(.*)$", text, re.DOTALL)
-    if not m:
-        raise ValueError("Missing frontmatter block (---...---) at top of file")
-    raw_fm, body = m.group(1), m.group(2)
-    meta = {}
-    for line in raw_fm.splitlines():
-        line = line.strip()
-        if not line or ":" not in line:
-            continue
-        key, val = line.split(":", 1)
-        key = key.strip()
-        val = val.strip()
-        meta[key] = _unquote(val)
-    return meta, body
-
-
 def load_posts():
     posts = []
     if not POSTS_DIR.exists():
         return posts
-    for f in sorted(POSTS_DIR.glob("*.md")):
+    for f in sorted(POSTS_DIR.glob("*.html")):
         raw = f.read_text(encoding="utf-8")
-        meta, body = parse_frontmatter(raw)
-        required = ["title", "date"]
-        missing = [r for r in required if r not in meta]
-        if missing:
-            print(f"WARNING: {f.name} missing fields {missing}, skipping")
+        article_match = re.search(r"<article\b([^>]*)>(.*?)</article>", raw, re.DOTALL | re.IGNORECASE)
+        if not article_match:
+            print(f"WARNING: {f.name} has no article element, skipping")
             continue
-        meta["filename"] = f.stem
-        meta["source_dir"] = f.parent
-        meta["html"] = markdown.markdown(
-            body, extensions=["fenced_code", "codehilite", "tables"]
+        _, article_body = article_match.groups()
+        title_match = re.search(r"<h1\b[^>]*>(.*?)</h1>", article_body, re.DOTALL | re.IGNORECASE)
+        date_match = re.search(
+            r'<div class="post-meta-row">\s*<span>(.*?)</span>',
+            article_body,
+            re.DOTALL | re.IGNORECASE,
         )
+        if not title_match or not date_match:
+            print(f"WARNING: {f.name} is missing an h1 or post-meta-row, skipping")
+            continue
+        title = re.sub(r"<[^>]+>", "", title_match.group(1)).strip()
+        date = date_match.group(1).strip()
+        content_match = re.search(
+            r'<div class="content">(.*)</div>',
+            article_body,
+            re.DOTALL | re.IGNORECASE,
+        )
+        if not content_match:
+            print(f"WARNING: {f.name} is missing a content div, skipping")
+            continue
+        content = content_match.group(1).strip()
+        content = re.sub(
+            rf'(?<=["\(])\.\./assets/{re.escape(f.stem)}/assets/',
+            'assets/',
+            content,
+        )
+        content = re.sub(r'(?<=["\(])\.\./assets/', 'assets/', content)
+        content = re.sub(
+            r"(<table\b[^>]*>.*?</table>)",
+            r'<div class="table-scroll">\1</div>',
+            content,
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+        meta = {
+            "title": title,
+            "date": date,
+            "filename": f.stem,
+            "html": content,
+        }
         try:
-            meta["_date_obj"] = datetime.strptime(meta["date"], "%Y-%m-%d")
+            meta["_date_obj"] = datetime.strptime(date, "%b %d, %Y")
         except ValueError:
             meta["_date_obj"] = datetime.min
         posts.append(meta)
     posts.sort(key=lambda p: p["_date_obj"], reverse=True)
     return posts
-
-
-def content_html(post, root):
-    """Adjust local Markdown image paths for the requested generated page."""
-    asset_root = f"{root}assets/{post['filename']}"
-
-    def replace_image(match):
-        src = match.group(1)
-        if re.match(r"^(?:[a-z]+:)?//|^(?:data|mailto):", src, re.IGNORECASE):
-            return match.group(0)
-        source_path = (post["source_dir"] / src).resolve()
-        try:
-            relative_path = source_path.relative_to(post["source_dir"].resolve())
-        except ValueError:
-            return match.group(0)
-        if not source_path.is_file():
-            print(f"WARNING: image not found for {post['filename']}: {src}")
-            return match.group(0)
-        return f'src="{asset_root}/{relative_path.as_posix()}"'
-
-    return re.sub(r'src="([^"]+)"', replace_image, post["html"])
-
-
-def fmt_date(date_str: str) -> str:
-    try:
-        d = datetime.strptime(date_str, "%Y-%m-%d")
-        return d.strftime("%b %-d, %Y")
-    except ValueError:
-        return date_str
 
 
 BASE_CSS = """
@@ -374,10 +343,17 @@ article.post h1 {
 .content li { margin-bottom: 0.45em; }
 
 .content table {
-  width: 100%;
+  width: max-content;
+  min-width: 100%;
   border-collapse: collapse;
-  margin: 0 0 1.5em;
   font-size: 0.95rem;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0 0 1.5em;
+  -webkit-overflow-scrolling: touch;
 }
 
 .content th,
@@ -509,29 +485,19 @@ def render_index(posts):
 
     if not posts:
         items_html.append(
-            '<div class="empty-state">no posts yet &mdash; drop a .md file in /posts and rebuild</div>'
+            '<div class="empty-state">no posts yet &mdash; add an .html file to /posts and rebuild</div>'
         )
 
     for p in posts:
-        video_html = ""
-        if p.get("video_url"):
-            m = re.search(r"(?:v=|youtu\.be/|embed/)([\w-]+)", p["video_url"])
-            if m:
-                video_html = f"""
-      <div class="video-embed">
-        <iframe src="https://www.youtube.com/embed/{m.group(1)}" title="{html.escape(p['title'])}" allowfullscreen loading="lazy"></iframe>
-      </div>"""
-
         items_html.append(f"""
     <article class="post-item">
       <div class="post-meta-row">
-        <span>{fmt_date(p['date'])}</span>
+        <span>{html.escape(p['date'])}</span>
       </div>
       <h2 class="post-title">{html.escape(p['title'])}</h2>
-{video_html}
       <div class="post-content-preview">
         <div class="content">
-        {content_html(p, '')}
+        {p['html']}
         </div>
       </div>
       <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
@@ -575,78 +541,20 @@ def render_index(posts):
     return html_out
 
 
-def render_post(post):
-    video_html = ""
-    if post.get("video_url"):
-        m = re.search(r"(?:v=|youtu\.be/|embed/)([\w-]+)", post["video_url"])
-        if m:
-            video_html = f"""
-      <div class="video-embed">
-        <iframe src="https://www.youtube.com/embed/{m.group(1)}" title="{html.escape(post['title'])}" allowfullscreen loading="lazy"></iframe>
-      </div>"""
-
-    html_out = HEAD_TEMPLATE.format(
-        title=html.escape(f"{post['title']} — adriano-229"),
-        description=html.escape(post.get("excerpt", SITE_TAGLINE)),
-        root="../",
-    )
-    html_out += HEADER_TEMPLATE.format(root="../")
-    html_out += f"""
-  <main>
-    <article class="post">
-    
-      <div class="post-meta-row">
-        <span>{fmt_date(post['date'])}</span>
-      </div>
-
-      <h1>{html.escape(post['title'])}</h1>
-      {video_html}
-      <div class="content">
-        {content_html(post, '../')}
-      </div>
-    </article>
-  </main>"""
-
-    html_out += FOOTER_TEMPLATE.format(year=datetime.now().year)
-    return html_out
-
-
 def build():
     OUT_DIR.mkdir(exist_ok=True)
-    (OUT_DIR / "posts").mkdir(exist_ok=True)
 
     (OUT_DIR / "style.css").write_text(BASE_CSS, encoding="utf-8")
 
     posts = load_posts()
 
-    assets_dir = OUT_DIR / "assets"
-    if assets_dir.exists():
-        shutil.rmtree(assets_dir)
-    assets_dir.mkdir(exist_ok=True)
-    for post in posts:
-        source_dir = post["source_dir"]
-        for image in re.findall(r"!\[[^\]]*\]\(([^)\s]+)",
-                                (source_dir / f"{post['filename']}.md").read_text(encoding="utf-8")):
-            source_path = (source_dir / image).resolve()
-            try:
-                relative_path = source_path.relative_to(source_dir.resolve())
-            except ValueError:
-                continue
-            if source_path.is_file():
-                destination = assets_dir / post["filename"] / relative_path
-                destination.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(source_path, destination)
-
     (OUT_DIR / "index.html").write_text(render_index(posts), encoding="utf-8")
-
-    expected_pages = {f"{p['filename']}.html" for p in posts}
-    for generated_page in (OUT_DIR / "posts").glob("*.html"):
-        if generated_page.name not in expected_pages:
-            generated_page.unlink()
-
-    for p in posts:
-        out_path = OUT_DIR / "posts" / f"{p['filename']}.html"
-        out_path.write_text(render_post(p), encoding="utf-8")
+    generated_posts = OUT_DIR / "posts"
+    if generated_posts.exists():
+        for generated_page in generated_posts.iterdir():
+            if generated_page.is_file():
+                generated_page.unlink()
+        generated_posts.rmdir()
 
     (OUT_DIR / ".nojekyll").write_text("", encoding="utf-8")
 

@@ -1,44 +1,41 @@
 # adriano-229
 
-A lightweight site for notes on CS topics. Write Markdown, push to GitHub, and the site builds and deploys itself.
+A lightweight site for notes on CS topics. Write HTML posts, push to GitHub, and the site builds and deploys itself.
 
 ## How it works
 
-- You write posts as `.md` files in `/posts`
-- `scripts/build.py` reads them and generates static HTML into `/docs`
+- You write posts as `.html` files in `/posts`
+- `build.py` reads their `<article>` elements and glues them into `docs/index.html`
 - A GitHub Actions workflow (`.github/workflows/deploy.yml`) runs the build automatically on every push and publishes `/docs` to the `gh-pages` branch
 
 ## Writing a new post
 
 Create a new file in `/posts`.
 
-Every post needs frontmatter like this:
+Each post is a regular HTML document containing one article. The article must include a
+`post-meta-row` with a date and an `h1` title:
 
-```markdown
----
-title: My talk on B-trees
-date: 2026-08-01
-video_url: https://www.youtube.com/watch?v=XXXXXXXXXXX   # optional
-excerpt: A walkthrough of B-tree indexing in databases.
----
-
-Optional write-up goes here below the embedded video.
+```html
+<article class="post">
+  <div class="post-meta-row"><span>Oct 23, 2026</span></div>
+  <h1>My talk on B-trees</h1>
+  <div class="content">
+    <p>Optional write-up goes here.</p>
+  </div>
+</article>
 ```
 
-Images can be added next to the Markdown file (or in a subfolder) and referenced with
-normal Markdown syntax:
-
-```markdown
-![Description](images/example.jpg)
-```
+The builder does not convert Markdown or generate individual post pages. It only combines
+the articles into the home page, so write the HTML you want displayed directly in each file.
+Tables are automatically placed in horizontal scroll containers when they are wider than a post.
 
 ## Previewing locally
 
 ```bash
-python3 scripts/build.py
+python3 build.py
 ```
 
-Regenerates everything in `/docs`. Open `docs/index.html` in a browser, or serve it locally:
+Regenerates `docs/index.html` and `docs/style.css`. Open `docs/index.html` in a browser, or serve it locally:
 
 ```bash
 cd docs && python3 -m http.server 8000
@@ -57,8 +54,13 @@ From then on, every push that touches `/posts` rebuilds and republishes automati
 
 ## Customizing
 
-- **Colors, fonts, spacing** — in `scripts/build.py`, inside the `BASE_CSS` string. The
-  `--body-font` field selects the page font and `--body-font-size` controls its size.
+- **Font** — change `--body-font` and `--body-font-size` in the `:root` section of the
+  `BASE_CSS` string in `build.py`.
+- **Background** — change `--paper` for the page color, or edit `body::before` in the
+  same `BASE_CSS` block to replace the decorative background gradients.
+- **Post width** — change `--max-w` in `:root`; it controls the centered site and post width.
+- **Colors, spacing, borders, and tables** — edit the other variables and selectors in
+  `BASE_CSS`. The build copies this CSS to `docs/style.css`.
 - **Profile image** — add your image as `docs/images/avatar.jpg`; it is displayed as a
   circular image in the centered header.
 - **Site name / tagline** — in `HEADER_TEMPLATE` and `SITE_TAGLINE`, same file
@@ -67,10 +69,9 @@ From then on, every push that touches `/posts` rebuilds and republishes automati
 
 ```
 .
-├── posts/                   ← write your .md posts here
+├── posts/                   ← write your .html posts here
 ├── docs/                    ← generated site (do not edit by hand)
-├── scripts/
-│   └── build.py              ← the whole site generator
+├── build.py                 ← the whole site generator
 ├── .github/workflows/
 │   └── deploy.yml             ← auto-build + deploy on push
 └── README.md

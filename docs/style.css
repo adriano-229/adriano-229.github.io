@@ -273,10 +273,17 @@ article.post h1 {
 .content li { margin-bottom: 0.45em; }
 
 .content table {
-  width: 100%;
+    width: max-content;
+    min-width: 100%;
   border-collapse: collapse;
-  margin: 0 0 1.5em;
   font-size: 0.95rem;
+}
+
+.table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 0 0 1.5em;
+    -webkit-overflow-scrolling: touch;
 }
 
 .content th,
