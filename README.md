@@ -1,5 +1,7 @@
 # adriano-229
 
+Visit the page at: https://adriano-229.github.io/
+
 A lightweight site for notes on CS topics. Write HTML posts, push to GitHub, and the site builds and deploys itself.
 
 ## How it works
