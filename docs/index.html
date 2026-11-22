@@ -6,6 +6,7 @@
 <title>adriano-229 — notes on topics</title>
 <meta name="description" content="notes on topics">
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 <body>
 
@@ -18,175 +19,6 @@
 <main>
     <article class="post-item">
       <div class="post-meta-row">
-        <span>Oct 20, 2026</span>
-      </div>
-        <h2 class="post-title">Business plan: Parallel rendering as a service</h2>
-      <div class="post-content-preview">
-        <div class="content">
-            <p>This proposal follows the intrapreneur guidelines. Legal, tax, and infrastructure costs are not included
-                because
-                the first version would be developed as a pilot inside an existing company.</p>
-
-            <h3>Business opportunity</h3>
-            <p>Many companies already have 3D models of products, buildings, machines, or environments, but turning
-                those assets
-                into high-quality images still requires powerful computers, specialized software, technical setup, and
-                repeated manual work.
-                This limits how quickly design, engineering, marketing, and sales teams can show realistic alternatives
-                to customers.</p>
-            <p>The proposed business is a managed <strong>3D visualization service</strong>: customers provide a
-                standard glTF or
-                GLB model and receive presentation-ready images from configured cameras, materials, and lighting. The
-                service would use a
-                parallel rendering pipeline to process several image tiles or jobs at once, making it possible to
-                deliver multiple views
-                and product variants without requiring the customer to own a powerful workstation.</p>
-
-            <h3>Proposed solution</h3>
-            <p>The existing C++ project is a strong technical foundation for this service. It already loads glTF and GLB
-                scenes,
-                supports cameras, textures, materials, shadows, direct lighting, indirect diffuse bounces, BVH
-                acceleration, progressive
-                tile rendering, and headless PNG output.</p>
-            <p>The customer would not need to configure a compiler, renderer, or virtual machine. A future web interface
-                or API
-                could accept a model, select a visual template, and return finished images with progress information and
-                a rendering history.</p>
-
-            <h3>Why not simply rent a cloud VM?</h3>
-            <p>A technically skilled customer can rent a VM and run a renderer independently, so compute capacity alone
-                is not
-                a strong differentiator. The service would compete by removing the surrounding work: model validation,
-                scene configuration,
-                camera and lighting presets, batch generation, consistent output, storage, and integration with the
-                customer's sales or
-                content workflow.</p>
-            <p>This creates a more interesting product than raw infrastructure. A furniture company could upload one
-                model and
-                receive a complete set of catalog views and color variants. An architect could request the same building
-                from several
-                camera positions. A manufacturer could generate proposal images from a configured product before
-                building a physical
-                prototype. These repeatable workflows are difficult to maintain when every customer manages a separate
-                VM.</p>
-
-            <h3>Target customers and applications</h3>
-            <ul>
-                <li>Product and furniture companies that need catalog images and configurable variants.</li>
-                <li>Architectural and real-estate firms that need interior, building, and renovation previews.</li>
-                <li>Manufacturers that want sales images for industrial equipment before production.</li>
-                <li>Agencies and design studios that need an automated rendering backend without buying workstations.
-                </li>
-                <li>Software companies that want an API for product configurators, digital twins, or proposal systems.
-                </li>
-            </ul>
-
-            <h3>Value proposition</h3>
-            <p>The service would shorten the path from an existing digital asset to a customer-facing visual. It could
-                reduce
-                manual rendering work, make design changes easier to compare, and let sales teams answer visual requests
-                faster. Standard
-                glTF/GLB input also makes the service compatible with many existing asset-production workflows instead
-                of forcing customers
-                into a proprietary scene format.</p>
-            <p>The strongest initial offer would be a <strong>managed rendering workflow</strong>, not an unrestricted
-                general-purpose cloud renderer. Templates, validation, predictable output, and optional support would
-                make the service
-                easier to adopt and provide value that a bare VM does not.</p>
-
-            <h3>Business model</h3>
-            <ul>
-                <li><strong>Professional service:</strong> render supplied models and prepare reusable templates.</li>
-                <li><strong>Subscription:</strong> provide a monthly number of jobs, stored projects, and standard
-                    output views.
-                </li>
-                <li><strong>API usage:</strong> charge by render time, image, resolution, or batch for integration with
-                    another product.
-                </li>
-                <li><strong>Enterprise deployment:</strong> install the service in private infrastructure when models
-                    are sensitive.
-                </li>
-            </ul>
-            <p>A small pilot should start with one narrow workflow, such as catalog images for configurable products.
-                Pricing
-                should be validated through customer interviews and a paid pilot rather than assumed in advance.</p>
-
-            <h3>Competitive position and limitations</h3>
-            <p>Commercial 3D packages offer more mature materials and artist tooling, while cloud VMs offer flexible
-                compute.
-                This project's opportunity is to provide a focused, programmable, and repeatable pipeline: open-standard
-                scene input, native
-                C++ performance, CPU portability, headless automation, and an architecture that can later use parallel
-                workers or GPU
-                acceleration.</p>
-            <p>It should not yet be marketed as a finished physically based renderer. Metallic and roughness values and
-                normal
-                maps are loaded, but the current shading model is mainly diffuse. The initial promise should focus on
-                reliable automated
-                visualization and workflow convenience, with rendering quality improving through the roadmap.</p>
-
-            <h3>Development roadmap</h3>
-            <ol>
-                <li><strong>Validate the problem:</strong> interview product, architecture, manufacturing, and
-                    visualization teams
-                    and select one repeatable use case.
-                </li>
-                <li><strong>Productize the prototype:</strong> add clear errors, structured logging, JSON render
-                    configuration,
-                    tests, benchmarks, camera and lighting presets, and documented input requirements.
-                </li>
-                <li><strong>Improve visual quality:</strong> implement a complete physically based material model,
-                    normal mapping,
-                    environment lighting, tone mapping, and better sampling or denoising.
-                </li>
-                <li><strong>Build the service:</strong> expose an API, add a job queue, progress reporting, project
-                    storage, access
-                    control, and an interface for uploading models and downloading results.
-                </li>
-                <li><strong>Scale execution:</strong> parallelize tile and job processing, optimize memory use, and
-                    evaluate GPU or
-                    cloud worker acceleration.
-                </li>
-            </ol>
-
-            <h3>Risks and mitigation</h3>
-            <ul>
-                <li><strong>VM competition:</strong> focus on templates, automation, integration, and support rather
-                    than raw compute.
-                </li>
-                <li><strong>Rendering quality:</strong> begin with controlled use cases and disclose prototype
-                    limitations while
-                    improving materials and lighting.
-                </li>
-                <li><strong>Performance and cost:</strong> benchmark scenes early, use job limits, and add parallel
-                    workers only
-                    when demand justifies them.
-                </li>
-                <li><strong>Asset confidentiality:</strong> offer private deployment or isolated storage for industrial
-                    and
-                    commercial models.
-                </li>
-            </ul>
-
-            <h3>Expected benefits</h3>
-            <p>For an internal pilot, success would mean that a customer can submit a valid model, choose a template,
-                and receive
-                a consistent set of images without manually configuring a workstation. The main measurements should be
-                time to first
-                render, cost per completed image, successful-job rate, turnaround time for variants, and willingness to
-                pay for the
-                workflow.</p>
-            <p>Overall, the project is best presented as a functional rendering prototype with commercialization
-                potential. Its
-                business value is not simply access to a remote computer; it is the possibility of turning standard 3D
-                assets into
-                repeatable, automated visual content for products, spaces, and technical proposals.</p>
-        </div>
-      </div>
-      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
-    </article>
-    <article class="post-item">
-      <div class="post-meta-row">
         <span>Oct 19, 2026</span>
       </div>
       <h2 class="post-title">Videos on business plans and entrepreneurship</h2>
@@ -194,14 +26,14 @@
         <div class="content">
         <p>I watched the video that summarizes the steps of a business
 plan: <a href="https://www.youtube.com/watch?v=-KhVuakkl3g">Plan de negocios – cómo hacer un plan de negocios en menos de un minuto</a>.</p>
-            <p>The video condenses the process into eight steps in under a minute. That is useful as a checklist to see
+        <p>The video condenses the process into eight steps in under a minute. That is useful as a checklist to see
 the whole picture and not forget any section. But a plan is not only a list of sections. The hard part is validating
 each assumption with real customers, and a one-minute video can't show that.</p>
 <p><strong>Another video I
 propose:</strong> <a href="https://www.youtube.com/watch?v=2Nel66ZB9Ck&amp;t=57s">Lean Canvas Workshop: Fast and effectively launch your business!</a>.
 It presents the Lean
 Canvas, a tool by Ash Maurya that summarizes an idea on a single page in about 20 minutes instead of writing a
-    traditional plan that takes weeks. I chose it because it answers the limitation I noticed above.</p>
+  traditional plan that takes weeks. I chose it because it answers the limitation I noticed above.</p>
         </div>
       </div>
       <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
@@ -216,8 +48,7 @@ Canvas, a tool by Ash Maurya that summarizes an idea on a single page in about 2
         <p>I took
 the <a href="https://www.psicologiahoy.com/co/test/carrera/test-habilidades-negociacion">negotiation skills test</a>.
 The score ranges are:</p>
-            <div class="table-scroll">
-                <table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>Score</th>
@@ -246,13 +77,12 @@ The score ranges are:</p>
 <td>Very good negotiations</td>
 </tr>
 </tbody>
-                </table>
-            </div>
+</table></div>
 <p>I scored <strong>64</strong>, which puts me in the Good negotiations range, right at its lower edge. I'm happy with the result,
-    but being at the border means there is still room to grow toward the top range!</p>
-            <p>This fits with my leadership results (see below). Being cooperative helps me find agreements, but I need
-                to defend
-                my own interests more clearly.</p>
+  but being at the border means there is still room to grow toward the top range!</p>
+        <p>This fits with my leadership results (see below). Being cooperative helps me find agreements, but I need to
+          defend
+          my own interests more clearly.</p>
         </div>
       </div>
       <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
@@ -266,17 +96,17 @@ The score ranges are:</p>
         <div class="content">
         <p>I took two tests to understand my leadership profile:
 the <a href="https://www.uvirtual.org/test-liderazgo-blake-mouton">Blake &amp; Mouton test</a> and
-            the <a href="https://gc.scalahed.com/recursos/files/r161r/w24518w/Teoria_liderazgo_situacional.pdf">Situational
-                Leadership test</a>. These were my results.</p>
-            <p><strong>On Blake &amp; Mouton:</strong> my result was Social (Country Club). This style is very good at
-                dealing with people but weak on
-                results and tasks. It gives staff a lot of freedom and lets them decide the best way to do things.
-                However, as can be drawn from the image, I'm in the middle, not at the center of it.</p>
-            <p style="text-align: center;"><img alt="Blake &amp; Mouton result" src="assets/blake.png"
-                                                style="width: 700px; height: auto;"/></p>
-            <p><strong>On Situational Leadership:</strong></p>
-            <div class="table-scroll">
-                <table>
+          the <a href="https://gc.scalahed.com/recursos/files/r161r/w24518w/Teoria_liderazgo_situacional.pdf">Situational
+            Leadership test</a>. These were my results.</p>
+        <p><strong>On Blake &amp; Mouton:</strong> my result was Social (Country Club). This style is very good at
+          dealing with people but weak on
+          results and tasks. It gives staff a lot of freedom and lets them decide the best way to do things. However, as
+          can be drawn from the image, I'm in the middle, not at the center of it.</p>
+        <p style="text-align: center;"><img alt="Blake &amp; Mouton result"
+                                            src="assets/10_leadership_style_tests/assets/blake.png"
+                                            style="width: 700px; height: auto;"/></p>
+        <p><strong>On Situational Leadership:</strong></p>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>Style</th>
@@ -301,8 +131,7 @@ the <a href="https://www.uvirtual.org/test-liderazgo-blake-mouton">Blake &amp; M
 <td>3</td>
 </tr>
 </tbody>
-                </table>
-            </div>
+</table></div>
 <p>My predominant style is Participating: I tend to involve people, listen to their opinions and build decisions
 together. My secondary style combines directing and delegating depending on the situation.</p>
 <p><strong>Reflection:</strong> both tests point in the same direction. I care about the people on the team and I prefer building
@@ -322,7 +151,7 @@ team projects I should practice setting clear goals and checking progress, witho
         <p>Today I completed an online crossword about concepts from <em>A Survival Guide for Leaders</em> by Ronald Heifetz and Marty
 Linsky, focused on change management. You can find it
 here: <a href="https://es.educaplay.com/recursos-educativos/12192121-conduccion_de_personas_game.html">Conducción de personas – Educaplay</a>.</p>
-            <p><img alt="Solved crossword" src="assets/words.png"/></p>
+<p><img alt="Solved crossword" src="assets/9_crossword_change_management/assets/words.png" /></p>
 <p>It was a quick way to review the key vocabulary of the text.</p>
         </div>
       </div>
@@ -335,7 +164,7 @@ here: <a href="https://es.educaplay.com/recursos-educativos/12192121-conduccion_
       <h2 class="post-title">Influence Strategies I Value Most</h2>
       <div class="post-content-preview">
         <div class="content">
-            <p>Those are</p>
+        <p>Those are</p>
 <ol>
 <li>
 <p><strong>Leading by Example:</strong> Demonstrating values and behaviors not only by words but also through actions. "A leader
@@ -366,11 +195,10 @@ manipulation.</p>
       <h2 class="post-title">Change, how to surf the uncertainty?</h2>
       <div class="post-content-preview">
         <div class="content">
-            <p>One significant change in my life was deciding to leave Industrial Engineering after three years of
-                classes
-                and switch to Computer
+        <p>One significant change in my life was deciding to leave Industrial Engineering after three years of classes
+              and switch to Computer
 Science. I had a persistent feeling that something was
-                wrong and that I needed to take a different path. I worried about the uncertainty of the
+              wrong and that I needed to take a different path. I worried about the uncertainty of the
 future and felt sad about the possibility of losing three years of effort.</p>
 <p>Four years later, I consider the change positive. Looking back, I realize that Industrial Engineering’s career
 opportunities did not particularly interest me. Computer Science, by contrast, gives me more opportunities to explore
@@ -380,12 +208,12 @@ of both
 degrees have a lot in common in terms of the topics involved, almost all of them were related to the same formal
 sciences. Thus, it wasn't much
 of a waste of time in that sense, maybe the opposite.</p>
-            <p>Several ideas from the course material can be explained by this process. First, the change involved
-                resistance, especially the
+          <p>Several ideas from the course material can be explained by this process. First, the change involved
+              resistance, especially the
 fear of the unknown and the desire for security. Second, Lewin’s model applies to my experience. The unfreezing stage
 began when I recognized my dissatisfaction with my original degree. The implementation stage involved changing careers
-                and adapting to a new field. Finally, refreezing meant settling into the new course and confirming over
-                time that it
+              and adapting to a new field. Finally, refreezing meant settling into the new course and confirming over
+              time that it
 was a better fit.</p>
         </div>
       </div>
@@ -405,8 +233,7 @@ was a better fit.</p>
 <li>3 = Frequently</li>
 <li>4 = Always</li>
 </ul>
-            <div class="table-scroll">
-                <table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align: right;">No.</th>
@@ -547,8 +374,7 @@ was a better fit.</p>
 <td style="text-align: center;">☒</td>
 </tr>
 </tbody>
-                </table>
-            </div>
+</table></div>
 <h3>My results</h3>
 <ul>
 <li>Total score: 49/64</li>
@@ -576,8 +402,7 @@ may be repeated within a row.</p>
 must be 200. Otherwise, there is an error, and the entire test should be reviewed.</p>
 <p>The highest-scoring columns determine which temperament or temperaments dominate your life.</p>
 <p>My result were:</p>
-            <div class="table-scroll">
-                <table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>Sanguine</th>
@@ -802,8 +627,7 @@ must be 200. Otherwise, there is an error, and the entire test should be reviewe
 <td style="text-align: right;">33</td>
 </tr>
 </tbody>
-                </table>
-            </div>
+</table></div>
         </div>
       </div>
       <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
@@ -829,8 +653,8 @@ accountability, and integrity.</p>
 <p>What draws me to Stanley is its focus on quality and durability—values that feel increasingly overlooked
 today. In a culture where everything is treated as disposable, I am interested in products built to last, not to be
 replaced.</p>
-            <p><img alt="stanley.png" src="assets/stanley.png"
-                    style="display: block; margin: 0 auto; width: 300px; height: auto;"/></p>
+          <p><img alt="stanley.png" src="assets/5_stanley_mission/assets/stanley.png"
+                  style="display: block; margin: 0 auto; width: 300px; height: auto;"/></p>
 <p>The company's logo is a crowned bear with wings. The bear represents resilience, the wings the nature or unbelievable,
 and the crown is a nod to the creator, who was a renown electrical engineer.</p>
         </div>
@@ -885,8 +709,7 @@ encouraged, but contractually enforced for life.</p>
         <div class="content">
         <p>I took the 16 personality test on this <a href="https://www.16personalities.com/free-personality-test">website</a> and got the
 result of ENFJ-T, known as the <em>Protagonist</em>. These were my scores:</p>
-            <div class="table-scroll">
-                <table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align: left;">Personality</th>
@@ -921,8 +744,7 @@ result of ENFJ-T, known as the <em>Protagonist</em>. These were my scores:</p>
 <td style="text-align: left;">42% Assertive (-A)</td>
 </tr>
 </tbody>
-                </table>
-            </div>
+</table></div>
 <p>As it can be seen, my scores are very close to the middle in all categories, which means I have a balanced personality
 and can adapt to different environments.</p>
         </div>
@@ -938,8 +760,7 @@ and can adapt to different environments.</p>
         <div class="content">
         <p>I took the multiple intelligences test on
 this <a href="https://alis.alberta.ca/careerinsite/know-yourself/multiple-intelligences-quiz">website</a> and got the following scores:</p>
-            <div class="table-scroll">
-                <table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align: left;">Intelligence</th>
@@ -980,8 +801,7 @@ this <a href="https://alis.alberta.ca/careerinsite/know-yourself/multiple-intell
 <td style="text-align: left;">47</td>
 </tr>
 </tbody>
-                </table>
-            </div>
+</table></div>
 <p>I agree on the overall results. However, for the naturalistic intelligence, I believe my score should've been higher!</p>
         </div>
       </div>
@@ -991,44 +811,17 @@ this <a href="https://alis.alberta.ca/careerinsite/know-yourself/multiple-intell
       <div class="post-meta-row">
         <span>Aug 27, 2026</span>
       </div>
-      <h2 class="post-title">Test on Emotional Intelligence</h2>
+      <h2 class="post-title">Emotional Intelligence Test: My Score and brief opinion</h2>
       <div class="post-content-preview">
         <div class="content">
         <p>I took the emotional intelligences test on
-this <a href="https://www.psychologytoday.com/us/tests/personality/emotional-intelligence-test">website</a> and got 70 out of 100, which is considered above average.</p>
-<p>I think being empathetic is one of the most important characteristics of emotional intelligence, as it
-implies a
-constant sense of "hearing" others' meta-language, and listening is usually harder than giving opinions.</p>
+this <a href="https://www.psychologytoday.com/us/tests/personality/emotional-intelligence-test">website</a> and got a score of 70 out of 100, which the page states to be above average.</p>
+<p>I consider empathy to be one (if not the most) essential but also challenging features an emotionally smart person should have, as it
+implies a constant sense of listening to others' not only words, but also what's beyond it: the 'meta-language'. This concept differs from non-verbality as the former is even more complex to describe pragmatically compared to the latter. That's why I believe effective communication is a tool that help bridge the gap between what can not be communicated and what it can.</p>
         </div>
       </div>
       <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
     </article></main>
-<script>
-  const updateExpandButtons = () => {
-    document.querySelectorAll(".expand-button").forEach((button) => {
-      const preview = button.previousElementSibling;
-      if (!preview.classList.contains("is-expanded")) {
-        const isTruncated = preview.scrollHeight > preview.clientHeight;
-        preview.classList.toggle("is-truncated", isTruncated);
-        button.hidden = !isTruncated;
-      }
-    });
-  };
-
-  document.querySelectorAll(".expand-button").forEach((button) => {
-    button.addEventListener("click", () => {
-      const preview = button.previousElementSibling;
-      const expanded = preview.classList.toggle("is-expanded");
-      button.hidden = false;
-      button.setAttribute("aria-expanded", String(expanded));
-      button.textContent = expanded ? "↑ Show less" : "↓ Show more";
-    });
-  });
-
-  updateExpandButtons();
-  window.addEventListener("resize", updateExpandButtons);
-</script>
-
   <footer class="site-footer">
     <p>&copy; 2026 adriano-229 &mdash; built with claude</p>
   </footer>
