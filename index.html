@@ -6,6 +6,7 @@
 <title>adriano-229 — notes on topics</title>
 <meta name="description" content="notes on topics">
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 <body>
 
@@ -102,7 +103,7 @@ the <a href="https://www.uvirtual.org/test-liderazgo-blake-mouton">Blake &amp; M
           results and tasks. It gives staff a lot of freedom and lets them decide the best way to do things. However, as
           can be drawn from the image, I'm in the middle, not at the center of it.</p>
         <p style="text-align: center;"><img alt="Blake &amp; Mouton result"
-                                            src="assets/blake.png"
+                                            src="assets/10_leadership_style_tests/assets/blake.png"
                                             style="width: 700px; height: auto;"/></p>
         <p><strong>On Situational Leadership:</strong></p>
 <div class="table-scroll"><table>
@@ -150,7 +151,7 @@ team projects I should practice setting clear goals and checking progress, witho
         <p>Today I completed an online crossword about concepts from <em>A Survival Guide for Leaders</em> by Ronald Heifetz and Marty
 Linsky, focused on change management. You can find it
 here: <a href="https://es.educaplay.com/recursos-educativos/12192121-conduccion_de_personas_game.html">Conducción de personas – Educaplay</a>.</p>
-<p><img alt="Solved crossword" src="assets/words.png" /></p>
+<p><img alt="Solved crossword" src="assets/9_crossword_change_management/assets/words.png" /></p>
 <p>It was a quick way to review the key vocabulary of the text.</p>
         </div>
       </div>
@@ -652,7 +653,7 @@ accountability, and integrity.</p>
 <p>What draws me to Stanley is its focus on quality and durability—values that feel increasingly overlooked
 today. In a culture where everything is treated as disposable, I am interested in products built to last, not to be
 replaced.</p>
-          <p><img alt="stanley.png" src="assets/stanley.png"
+          <p><img alt="stanley.png" src="assets/5_stanley_mission/assets/stanley.png"
                   style="display: block; margin: 0 auto; width: 300px; height: auto;"/></p>
 <p>The company's logo is a crowned bear with wings. The bear represents resilience, the wings the nature or unbelievable,
 and the crown is a nod to the creator, who was a renown electrical engineer.</p>
@@ -820,33 +821,19 @@ implies a constant sense of listening to others' not only words, but also what's
         </div>
       </div>
       <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
+    </article>
+    <article class="post-item">
+      <div class="post-meta-row">
+        <span>Mon DD, YYYY</span>
+      </div>
+      <h2 class="post-title">Post title</h2>
+      <div class="post-content-preview">
+        <div class="content">
+        <p>Write the post content here.</p>
+        </div>
+      </div>
+      <button class="expand-button" type="button" aria-expanded="false" hidden>↓ Show more</button>
     </article></main>
-<script>
-  const updateExpandButtons = () => {
-    document.querySelectorAll(".expand-button").forEach((button) => {
-      const preview = button.previousElementSibling;
-      if (!preview.classList.contains("is-expanded")) {
-        const isTruncated = preview.scrollHeight > preview.clientHeight;
-        preview.classList.toggle("is-truncated", isTruncated);
-        button.hidden = !isTruncated;
-      }
-    });
-  };
-
-  document.querySelectorAll(".expand-button").forEach((button) => {
-    button.addEventListener("click", () => {
-      const preview = button.previousElementSibling;
-      const expanded = preview.classList.toggle("is-expanded");
-      button.hidden = false;
-      button.setAttribute("aria-expanded", String(expanded));
-      button.textContent = expanded ? "↑ Show less" : "↓ Show more";
-    });
-  });
-
-  updateExpandButtons();
-  window.addEventListener("resize", updateExpandButtons);
-</script>
-
   <footer class="site-footer">
     <p>&copy; 2026 adriano-229 &mdash; built with claude</p>
   </footer>
